@@ -1,0 +1,5 @@
+DELETE FROM `sheet_vampire_chars` 
+ALTER TABLE `sheet_vampire_chars` AUTO_INCREMENT=0;
+
+DELETE FROM `sheet_vampire_chars_attributes`
+ALTER TABLE `sheet_vampire_chars_attributes`AUTO_INCREMENT=0;
