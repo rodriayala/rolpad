@@ -47,18 +47,17 @@ $(window).on('load', function () {//al principio de la carga seteo los valores a
 								  		let col = 0;
 								  		if(key4=="attributes"){ col = 1; }
 								  		if(key4=="abilities"){ col = 2; }	
-								  		console.log(val4.name);
 								  			$("#col"+col+val4.column_al+"").append('<div class="form-group row">'
 								  								+ '<h4 class="col-sm-3 col-md-4 col-form-label" data-i18n="'+val4.name+'">'+val4.name+':</h4>'
 								  								+ 	'<div class="col-sm-8 col-md-8" style="margin-top: 9px;">'
-								  								+		'<input type="radio" name="'+val4.html_tag+'" value="1" '+ (val4.actual_value == 1 ? "checked": " ") +' />'
-								  								+		'<input type="radio" name="'+val4.html_tag+'" value="2" '+ (val4.actual_value == 2 ? "checked": " ") +' />'
-								  								+		'<input type="radio" name="'+val4.html_tag+'" value="3" '+ (val4.actual_value == 3 ? "checked": " ") +' />'
-								  								+		'<input type="radio" name="'+val4.html_tag+'" value="4" '+ (val4.actual_value == 4 ? "checked": " ") +' />'
-								  								+		'<input type="radio" name="'+val4.html_tag+'" value="5" '+ (val4.actual_value == 5 ? "checked": " ") +' />'
-								  								+		'<input type="radio" name="'+val4.html_tag+'" value="6" '+ (val4.actual_value == 6 ? "checked": " ") +' />'
-								  								+		'<input type="radio" name="'+val4.html_tag+'" value="7" '+ (val4.actual_value == 7 ? "checked": " ") +' />'
-								  								+		'<input type="radio" name="'+val4.html_tag+'" value="8" '+ (val4.actual_value == 8 ? "checked": " ") +' />'
+								  								+		'<input type="radio" name="'+val4.html_tag+'" value="1" '+ (val4.actual_value == 1 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',1)" />'
+								  								+		'<input type="radio" name="'+val4.html_tag+'" value="2" '+ (val4.actual_value == 2 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',2)" />'
+								  								+		'<input type="radio" name="'+val4.html_tag+'" value="3" '+ (val4.actual_value == 3 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',3)" />'
+								  								+		'<input type="radio" name="'+val4.html_tag+'" value="4" '+ (val4.actual_value == 4 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',4)" />'
+								  								+		'<input type="radio" name="'+val4.html_tag+'" value="5" '+ (val4.actual_value == 5 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',5)" />'
+								  								+		'<input type="radio" name="'+val4.html_tag+'" value="6" '+ (val4.actual_value == 6 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',6)" />'
+								  								+		'<input type="radio" name="'+val4.html_tag+'" value="7" '+ (val4.actual_value == 7 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',7)" />'
+								  								+		'<input type="radio" name="'+val4.html_tag+'" value="8" '+ (val4.actual_value == 8 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',8)" />'
 								  								+	'</div>'
 								  								+ '</div>');
 								  		//end attributes				  												
