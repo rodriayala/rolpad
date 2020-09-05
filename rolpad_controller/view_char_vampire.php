@@ -11,6 +11,8 @@ $db_con = conectar();
 $stmt = $db_con->prepare("SELECT * FROM `sheet_vampire_chars` WHERE id_char = :id_char");
 $stmt->bindParam(":id_char", $id_char);
 
+#$json_res[] ="";
+$json_res =['char' => array()];
 $type ="";
 try {
    	if ($stmt->execute()) 
@@ -32,8 +34,9 @@ try {
 			$bloodpool_total 	= trim($row['bloodpool_total']);
 			$bloodpool_used 	= trim($row['bloodpool_used']);
 			$experience 		= trim($row['experience']);
+			$is_npc	 			= trim($row['is_npc']);
 
-			 $json_res = array(
+			 $json_res_init = array(array("vampire"=>array(
 								"id_char" => $id_char,
 								"name_char" => "$name",							
 								"nature" => "$nature",
@@ -48,8 +51,13 @@ try {
 								"willpower_subtotal" => $willpower_subtotal,
 								"bloodpool_total" => $bloodpool_total,
 								"bloodpool_used" => $bloodpool_used,
-								"experience" => $experience
-							);	
+								"experience" => $experience,
+								"is_npc" => $is_npc								
+								)
+			 				));
+			#$json_res[] = $json_res_init;	
+			//$json_res =['vampire' => array($json_res_init)];
+			$json_res["char"][] = $json_res_init;				
 	    }//end while
 
 	}
@@ -57,6 +65,8 @@ try {
     $mensaje = "Error, surguio un problema al consultar el vampiro" . $e->getMessage();
     $type = "error";
 }
+//echo json_encode($json_res);die;
+//var_dump($json_res); die;
 ##########################################################################################Attributes
 	$db_con_at = conectar();
 	$stmt_at = $db_con_at->prepare("SELECT *, sheet_vampire_chars_attributes.id as id_opt_at FROM `sheet_vampire_chars_attributes` INNER JOIN sheet_vampire_opt_attributes ON sheet_vampire_opt_attributes.id_ab= sheet_vampire_chars_attributes.id_at where sheet_vampire_chars_attributes.id_char = :id_char order BY sheet_vampire_opt_attributes.id_ab");
@@ -73,7 +83,6 @@ try {
 			$db_con_at = null;
 	}
 
-	$X=0;
 	$arrayAttributes=NULL;
 	foreach($_row_at as $arr_at)
 	{
@@ -81,67 +90,69 @@ try {
 		$name 			= trim($arr_at['name']);
 		$actual_value 	= trim($arr_at['actual_value']);
 		$column_al 		= trim($arr_at['column_al']);
+		$html_tag 		= trim($arr_at['html_tag']);
 
 		$json_res_par_at= array("attributes"=>array(											
 													"id" => $id,
 													"name" => $name,
 													"actual_value" => $actual_value,
-													"column_al" => $column_al
+													"column_al" => $column_al,
+													"html_tag" => $html_tag
 												 )
 										
 							);
 		$arrayAttributes[] = $json_res_par_at;
-		$X++;
 	}
 ##########################################################################################Attributes
-$json_res = $json_res + $arrayAttributes;
+$json_res["char"][] = $arrayAttributes;
+#var_dump($json_res); die;
 ##########################################################################################
-	$db_con0 = conectar();
-	$stmt0 = $db_con0->prepare("SELECT *, sheet_vampire_chars_abilities.id as id_opt_ab FROM `sheet_vampire_chars_abilities`
+	$db_con_ab = conectar();
+	$stmt_ab = $db_con_ab->prepare("SELECT *, sheet_vampire_chars_abilities.id as id_opt_ab FROM `sheet_vampire_chars_abilities`
 	INNER JOIN sheet_vampire_opt_abilities ON sheet_vampire_opt_abilities.id = sheet_vampire_chars_abilities.id_ab
 	where sheet_vampire_chars_abilities.id_char =:id_char
 	order BY sheet_vampire_opt_abilities.id");
-	$stmt0->bindParam(":id_char", $id_char);
+	$stmt_ab->bindParam(":id_char", $id_char);
 
 	try{
-		if($stmt0->execute())
+		if($stmt_ab->execute())
 		{
-			$_row = $stmt0->fetchAll();	
+			$_row_ab = $stmt_ab->fetchAll();	
 
 		}
 	}catch(PDOException $e){
 			$message = "Error, surguio un problema al cargar la informacion".$e->getMessage(); $type = "error";
-			$db_con0 = null;
+			$db_con_ab = null;
 	}
 
-	$X=0;
 	$arrayabilities=NULL;
-	foreach($_row as $arr)
+	foreach($_row_ab as $arr_ab)
 	{
 		//$id 		= trim($row2['id']);//is for default value
-		$name 			= trim($arr['name']);
-		$actual_value 	= trim($arr['actual_value']);
-		$column_al 		= trim($arr['column_al']);
-		$is_masquerade 	= trim($arr['is_masquerade']);
-		$is_concealable = trim($arr['is_concealable']);
-		$id_opt_ab 		= trim($arr['id_opt_ab']);
+		$name 			= trim($arr_ab['name']);
+		$actual_value 	= trim($arr_ab['actual_value']);
+		$column_al 		= trim($arr_ab['column_al']);
+		$is_masquerade 	= trim($arr_ab['is_masquerade']);
+		$is_concealable = trim($arr_ab['is_concealable']);
+		$id_opt_ab 		= trim($arr_ab['id_opt_ab']);
+		$html_tag 		= trim($arr_ab['html_tag']);
 
-		$json_res_par1= array("abilities"=>array(											
-													"id_opt_ab" => $id_opt_ab,
+		$json_res_par_ab= array("abilities"=>array(											
+													"id" => $id_opt_ab,
 													"name" => $name,
 													"actual_value" => $actual_value,
 													"column_al" => $column_al,
 													"is_masquerade" => $is_masquerade,
-													"is_concealable" => $is_concealable
+													"is_concealable" => $is_concealable,
+													"html_tag" => $html_tag
 												 )
 										
 							);
-		$arrayabilities[] = $json_res_par1;
-		$X++;
+		$arrayabilities[] = $json_res_par_ab;
 	}
 ##########################################################################################
-$json_res = $json_res + $arrayabilities;
-#var_dump(($json_res)); die;
+$json_res["char"][] = $arrayabilities;
+#var_dump($json_res); die;
 ##########################################################################################
 	$db_con_dis = conectar();
 	$stmt_dis = $db_con_dis->prepare("SELECT *, sheet_vampire_chars_disciplines.id as id_opt_di FROM `sheet_vampire_chars_disciplines`
@@ -161,7 +172,6 @@ $json_res = $json_res + $arrayabilities;
 		$db_con_dis = null;
 	}
 
-	$X=0;
 	$arrayadisciplines=NULL;
 	foreach($_row_dis as $arr_dis)
 	{
@@ -184,10 +194,10 @@ $json_res = $json_res + $arrayabilities;
 										
 							);
 		$arrayadisciplines[] = $json_res_par_dis;
-		$X++;
 	}
 ##########################################################################################
-if($arrayadisciplines!=NULL) $json_res = $json_res + $arrayadisciplines;
+if($arrayadisciplines!=NULL) #$json_res = $json_res + $arrayadisciplines;
+	$json_res["char"][] = $arrayadisciplines;
 #var_dump(($json_res)); die;
 ##########################################################################################
 	$db_con_bac = conectar();
@@ -209,7 +219,6 @@ if($arrayadisciplines!=NULL) $json_res = $json_res + $arrayadisciplines;
 		$db_con_bac = null;
 	}
 
-	$X=0;
 	$arrayabackgrounds=NULL;
 	foreach($_row_bac as $arr_bac)
 	{
@@ -228,10 +237,10 @@ if($arrayadisciplines!=NULL) $json_res = $json_res + $arrayadisciplines;
 										
 							);
 		$arrayabackgrounds[] = $json_res_par_bac;
-		$X++;
 	}
 ##########################################################################################
-if($arrayabackgrounds!=NULL) $json_res = $json_res + $arrayabackgrounds;
+if($arrayabackgrounds!=NULL) #$json_res = $json_res + $arrayabackgrounds;
+$json_res["char"][] = $arrayabackgrounds;
 ##########################################################################################
 	$db_con_oth = conectar();
 	$stmt_oth = $db_con_oth->prepare("SELECT *, sheet_vampire_chars_chars_others.id as id_opt_co FROM `sheet_vampire_chars_chars_others`
@@ -251,8 +260,7 @@ if($arrayabackgrounds!=NULL) $json_res = $json_res + $arrayabackgrounds;
 		$db_con_oth = null;
 	}
 
-	$X=0;
-	$arrayabackgrounds=NULL;
+	$arrayachars_others=NULL;
 	foreach($_row_oth as $arr_oth)
 	{
 		$id 			= trim($arr_bac['id']);//is for default value
@@ -267,11 +275,11 @@ if($arrayabackgrounds!=NULL) $json_res = $json_res + $arrayabackgrounds;
 												 )
 										
 							);
-		$arrayabackgrounds[] = $json_res_par_bac;
-		$X++;
+		$arrayachars_others[] = $json_res_par_bac;
 	}
 ##########################################################################################
-if($arrayabackgrounds!=NULL) $json_res = $json_res + $arrayabackgrounds;
+if($arrayabackgrounds!=NULL) #$json_res = $json_res + $arrayachars_others;
+$json_res["char"][] = $arrayachars_others;
 ##########################################################################################
 	$db_con_dam = conectar();
 	$stmt_dam = $db_con_dam->prepare("SELECT *, sheet_vampire_chars_damage.id as id_dam FROM `sheet_vampire_chars_damage`
@@ -291,7 +299,6 @@ if($arrayabackgrounds!=NULL) $json_res = $json_res + $arrayabackgrounds;
 		$db_con_dam = null;
 	}
 
-	$X=0;
 	$arrayDamage=NULL;
 	foreach($_row_dam as $arr_dam)
 	{
@@ -308,10 +315,10 @@ if($arrayabackgrounds!=NULL) $json_res = $json_res + $arrayabackgrounds;
 										
 							);
 		$arrayDamage[] = $json_res_par_dam;
-		$X++;
 	}
 ##########################################################################################
-if($arrayDamage!=NULL) $json_res = $json_res + $arrayDamage;
+if($arrayDamage!=NULL) #$json_res = $json_res + $arrayDamage;
+$json_res["char"][] = $arrayDamage;
 ##########################################################################################
 	$db_con_vi = conectar();
 	$stmt_vi = $db_con_vi->prepare("SELECT *, sheet_vampire_chars_virtues.id as id_dam FROM sheet_vampire_chars_virtues
@@ -330,7 +337,6 @@ if($arrayDamage!=NULL) $json_res = $json_res + $arrayDamage;
 		$db_con_vi = null;
 	}
 
-	$X=0;
 	$arrayVirtues=NULL;
 	foreach($_row_vi as $arr_vi)
 	{
@@ -347,15 +353,20 @@ if($arrayDamage!=NULL) $json_res = $json_res + $arrayDamage;
 										
 							);
 		$arrayVirtues[] = $json_res_par_vi;
-		$X++;
 	}
 ##########################################################################################
-if($arrayVirtues!=NULL) $json_res = $json_res + $arrayVirtues;
+if($arrayVirtues!=NULL) #$json_res = $json_res + $arrayVirtues;
+$json_res["char"][] = $arrayVirtues;
 
 //var_dump($json_res); die;
-$stmt  = NULL;
-$stmt2 = NULL;
-$stmt3 = NULL;
+$stmt  		= NULL;
+$stmt_at 	= NULL;
+$stmt0		= NULL;
+$stmt_dis 	= NULL;
+$stmt_bac 	= NULL;
+$stmt_oth 	= NULL;
+$stmt_dam 	= NULL;
+$stmt_vi 	= NULL;
 
 if($type == "error")
 {
