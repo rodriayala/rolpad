@@ -178,13 +178,10 @@ $json_res["char"][] = $arrayabilities;
 		//$id 		= trim($arr_dis['id']);//is for default value
 		$name 			= trim($arr_dis['name']);
 		$actual_value 	= trim($arr_dis['actual_value']);
-		$column_al 		= trim($arr_dis['column_al']);
-		$is_masquerade 	= trim($arr_dis['is_masquerade']);
-		$is_concealable = trim($arr_dis['is_concealable']);
-		$id_opt_ab 		= trim($arr_dis['id_opt_ab']);
+		$id_opt_di 		= trim($arr_dis['id_opt_di']);
 
 		$json_res_par_dis= array("disciplines"=>array(											
-													"id_opt_ab" => $id_opt_ab,
+													"id_opt_di" => $id_opt_di,
 													"name" => $name,
 													"actual_value" => $actual_value,
 													"column_al" => $column_al,
@@ -222,14 +219,15 @@ if($arrayadisciplines!=NULL) #$json_res = $json_res + $arrayadisciplines;
 	$arrayabackgrounds=NULL;
 	foreach($_row_bac as $arr_bac)
 	{
-		$id 			= trim($arr_bac['id_bac']);//is for default value
+		//$id 			= trim($arr_bac['id_bac']);//is for default value
 		$name 			= trim($arr_bac['name']);
 		$actual_value 	= trim($arr_bac['actual_value']);
 		$is_masquerade 	= trim($arr_bac['is_masquerade']);
-		$id_opt_ab 		= trim($arr_bac['id_opt_ab']);
+		$id_opt_ba 		= trim($arr_bac['id_opt_ba']);
 
-		$json_res_par_bac= array("backgrounds"=>array(											
-													"id_opt_ab" => $id_opt_ab,
+		$json_res_par_bac= array("backgrounds"=>array(	
+													//"id" => $id,										
+													"id_opt_ba" => $id_opt_ba,
 													"name" => $name,
 													"actual_value" => $actual_value,
 													"is_masquerade" => $is_masquerade
@@ -250,7 +248,7 @@ $json_res["char"][] = $arrayabackgrounds;
 	$stmt_oth->bindParam(":id_char", $id_char);
 
 	try{
-		if($stmt_bac->execute())
+		if($stmt_oth->execute())
 		{
 			$_row_oth = $stmt_oth->fetchAll();	
 
@@ -263,22 +261,22 @@ $json_res["char"][] = $arrayabackgrounds;
 	$arrayachars_others=NULL;
 	foreach($_row_oth as $arr_oth)
 	{
-		$id 			= trim($arr_bac['id']);//is for default value
-		$name 			= trim($arr_bac['name']);
-		$actual_value 	= trim($arr_bac['actual_value']);
-		$id_opt_ab 		= trim($arr_bac['id_opt_co']);
+		//$id 			= trim($arr_oth['id']);//is for default value
+		$name 			= trim($arr_oth['name']);
+		$actual_value 	= trim($arr_oth['actual_value']);
+		$id_opt_co 		= trim($arr_oth['id_opt_co']);
 
-		$json_res_par_bac= array("chars_others"=>array(											
-													"id_opt_co" => $id_opt_ab,
+		$json_res_par_co= array("chars_others"=>array(											
+													"id_opt_co" => $id_opt_co,
 													"name" => $name,
 													"actual_value" => $actual_value
 												 )
 										
 							);
-		$arrayachars_others[] = $json_res_par_bac;
+		$arrayachars_others[] = $json_res_par_co;
 	}
 ##########################################################################################
-if($arrayabackgrounds!=NULL) #$json_res = $json_res + $arrayachars_others;
+if($arrayachars_others!=NULL) #$json_res = $json_res + $arrayachars_others;
 $json_res["char"][] = $arrayachars_others;
 ##########################################################################################
 	$db_con_dam = conectar();
