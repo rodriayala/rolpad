@@ -30,7 +30,7 @@ $stmt->bindParam(":experience", $experience);
 
 
 try {
-    if ($stmt->execute())//SI PUDO AGREGAR LA CABECERA CONTINUO GUARDANDO
+    if ($stmt->execute())
     {
 		$stmt 	= $db_con->query("SELECT LAST_INSERT_ID()");
         $id_char = $stmt->fetchColumn(); 
@@ -89,19 +89,47 @@ try {
     $mensaje = "Error, surguio un problema al crear la habilidad " . $e->getMessage();
     $type = "error";
 }
-/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////virtues
+$db_con6 = conectar();
+$stmt6 	 = $db_con6->prepare("SELECT * FROM `sheet_vampire_opt_virtues` WHERE true ORDER BY `id`  ASC ");
 
+try {
+	$stmt6->execute();
+    while($row6=$stmt6->fetch(PDO::FETCH_ASSOC))
+    {
+		$id_vi 			= $row6['id']; 
+		$actual_value 	= 1;
+		$selected 		= 1;
+
+		$db_con7 = conectar();
+		$stmt7 	 = $db_con7->prepare("INSERT INTO `sheet_vampire_chars_virtues`(`id_char`, `id_vi`, `actual_value`, `selected`) VALUES (:id_char,:id_vi,:actual_value,:selected)");
+
+		$stmt7->bindParam(":id_char", $id_char);
+		$stmt7->bindParam(":id_vi", $id_vi);
+		$stmt7->bindParam(":actual_value", $actual_value);
+		$stmt7->bindParam(":selected", $selected);
+		$stmt7->execute();
+    }
+ } catch (PDOException $e) {
+    $mensaje = "Error, surguio un problema al crear la virtud " . $e->getMessage();
+    $type = "error";
+}
+
+////////////////////////////////////////////////////////////////////////////////////////end virtues	
 
 
 $stmt  = NULL;
 $stmt2 = NULL;
 $stmt3 = NULL;
 $stmt4 = NULL;
+$stmt5 = NULL;
+$stmt6 = NULL;
+$stmt7 = NULL;
 
 if($type == "error")
 {
 	http_response_code(403);
-	echo json_encode(array("mensaje" => "Error al guardar intente nuevamente."));	
+	echo json_encode(array("mensaje" => "Error al guardar intente nuevamente. $mensaje"));	
 }else{
 	http_response_code(200);
 	echo json_encode(array("id" => $id_char));

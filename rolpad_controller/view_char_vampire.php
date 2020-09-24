@@ -175,13 +175,13 @@ $json_res["char"][] = $arrayabilities;
 	$arrayadisciplines=NULL;
 	foreach($_row_dis as $arr_dis)
 	{
-		//$id 		= trim($arr_dis['id']);//is for default value
+		$id 			= trim($arr_dis['id_di']);//is for default value
 		$name 			= trim($arr_dis['name']);
 		$actual_value 	= trim($arr_dis['actual_value']);
 		$id_opt_di 		= trim($arr_dis['id_opt_di']);
 
 		$json_res_par_dis= array("disciplines"=>array(											
-													"id_opt_di" => $id_opt_di,
+													"id_opt_di" => $id,
 													"name" => $name,
 													"actual_value" => $actual_value,
 													"column_al" => $column_al,
@@ -219,7 +219,7 @@ if($arrayadisciplines!=NULL) #$json_res = $json_res + $arrayadisciplines;
 	$arrayabackgrounds=NULL;
 	foreach($_row_bac as $arr_bac)
 	{
-		//$id 			= trim($arr_bac['id_bac']);//is for default value
+		$id 			= trim($arr_bac['id_bac']);//is for default value
 		$name 			= trim($arr_bac['name']);
 		$actual_value 	= trim($arr_bac['actual_value']);
 		$is_masquerade 	= trim($arr_bac['is_masquerade']);
@@ -227,7 +227,7 @@ if($arrayadisciplines!=NULL) #$json_res = $json_res + $arrayadisciplines;
 
 		$json_res_par_bac= array("backgrounds"=>array(	
 													//"id" => $id,										
-													"id_opt_ba" => $id_opt_ba,
+													"id_opt_ba" => $id,
 													"name" => $name,
 													"actual_value" => $actual_value,
 													"is_masquerade" => $is_masquerade
@@ -319,7 +319,7 @@ if($arrayDamage!=NULL) #$json_res = $json_res + $arrayDamage;
 $json_res["char"][] = $arrayDamage;
 ##########################################################################################
 	$db_con_vi = conectar();
-	$stmt_vi = $db_con_vi->prepare("SELECT *, sheet_vampire_chars_virtues.id as id_dam FROM sheet_vampire_chars_virtues
+	$stmt_vi = $db_con_vi->prepare("SELECT *, sheet_vampire_chars_virtues.id as id_cv FROM sheet_vampire_chars_virtues
 	INNER JOIN sheet_vampire_opt_virtues ON sheet_vampire_opt_virtues.id = sheet_vampire_chars_virtues.id_vi
 	where sheet_vampire_chars_virtues.id_char =:id_char
 	order BY sheet_vampire_opt_virtues.id");
@@ -338,13 +338,14 @@ $json_res["char"][] = $arrayDamage;
 	$arrayVirtues=NULL;
 	foreach($_row_vi as $arr_vi)
 	{
-		$id 		= trim($arr_vi['id']);//is for default value
+		$id_vi 		= trim($arr_vi['id_vi']);//is for default value
 		$name 		= trim($arr_vi['name']);
-		$value 		= trim($arr_vi['value']);
-		$id_opt_ab 	= trim($arr_vi['id_opt_d']);
+		$value 		= trim($arr_vi['actual_value']);
+		$id_cv	 	= trim($arr_vi['id_cv']);
 
 		$json_res_par_vi= array("virtues"=>array(											
-													"id" => $id,
+													"id_vi" => $id_vi,//position
+													"id" => $id_cv,
 													"name" => $name,
 													"value" => $value
 												 )

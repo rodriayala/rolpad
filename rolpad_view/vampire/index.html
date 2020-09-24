@@ -162,32 +162,32 @@
 				<div class="form-group row">					
 					<h4 class="col-sm-3 col-md-7 col-form-label" data-i18n="Conscience">Conscience/Conviction:</h4>
 					<div class="col-sm-8 col-md-5" style="margin-top: 9px;">
-						<input type="radio" name="attr_C_C" value="1" checked/>
-						<input type="radio" name="attr_C_C" value="2" />
-						<input type="radio" name="attr_C_C" value="3" />
-						<input type="radio" name="attr_C_C" value="4" />
-						<input type="radio" name="attr_C_C" value="5" />
+						<input type="radio" name="attr_virtues1" value="1" onclick="update_vi(1,1)"/>
+						<input type="radio" name="attr_virtues1" value="2" onclick="update_vi(1,2)"/>
+						<input type="radio" name="attr_virtues1" value="3" onclick="update_vi(1,3)"/>
+						<input type="radio" name="attr_virtues1" value="4" onclick="update_vi(1,4)"/>
+						<input type="radio" name="attr_virtues1" value="5" onclick="update_vi(1,5)"/>
 					</div>
 				</div>
 
 				<div class="form-group row">					
 					<h4 class="col-sm-3 col-md-7 col-form-label" data-i18n="Self-Control">Self-Control/Instinct:</h4>
 					<div class="col-sm-8 col-md-5" style="margin-top: 9px;">
-						<input type="radio" name="attr_S_I" value="1" checked/>
-						<input type="radio" name="attr_S_I" value="2" />
-						<input type="radio" name="attr_S_I" value="3" />
-						<input type="radio" name="attr_S_I" value="4" />
-						<input type="radio" name="attr_S_I" value="5" />	
+						<input type="radio" name="attr_virtues2" value="1" onclick="update_vi(2,1)"/>
+						<input type="radio" name="attr_virtues2" value="2" onclick="update_vi(2,2)"/>
+						<input type="radio" name="attr_virtues2" value="3" onclick="update_vi(2,3)"/>
+						<input type="radio" name="attr_virtues2" value="4" onclick="update_vi(2,4)"/>
+						<input type="radio" name="attr_virtues2" value="5" onclick="update_vi(2,5)"/>	
 					</div>
 				</div>
 				<div class="form-group row">					
 					<h4 class="col-sm-3 col-md-7 col-form-label" data-i18n="Courage">Courage:</h4>
 					<div class="col-sm-8 col-md-5" style="margin-top: 9px;">
-						<input type="radio" name="attr_Courage" value="1" checked/>
-						<input type="radio" name="attr_Courage" value="2" />
-						<input type="radio" name="attr_Courage" value="3" />
-						<input type="radio" name="attr_Courage" value="4" />
-						<input type="radio" name="attr_Courage" value="5" />
+						<input type="radio" name="attr_virtues3" value="1" onclick="update_vi(3,1)"/>
+						<input type="radio" name="attr_virtues3" value="2" onclick="update_vi(3,2)"/>
+						<input type="radio" name="attr_virtues3" value="3" onclick="update_vi(3,3)"/>
+						<input type="radio" name="attr_virtues3" value="4" onclick="update_vi(3,4)"/>
+						<input type="radio" name="attr_virtues3" value="5" onclick="update_vi(3,5)"/>
 					</div>
 				</div>
 			
@@ -213,65 +213,69 @@
 			<div class="col-12 col-sm-4 col-md-4">
 				<h3 style="text-align: center" data-i18n="Humanity/Path">Humanity/Path</h3>
 				<div class="form-group row">						
-					<input type="text" name="attr_Path1Name" id="attr_Path1Name" class="col-sm-12 col-md-12 col-form-label"/>	
-					<div class="col-sm-12 col-md-12" style="margin-top: 9px;text-align: center;">
-						<input type="radio" name="attr_Path1" value="0" id="0"/>
-						<input type="radio" name="attr_Path1" value="1" id="1"/>
-						<input type="radio" name="attr_Path1" value="2" id="2"/>
-						<input type="radio" name="attr_Path1" value="3" id="3"/>
-						<input type="radio" name="attr_Path1" value="4" id="4"/>
-						<input type="radio" name="attr_Path1" value="5" id="5"/>
-						<input type="radio" name="attr_Path1" value="6" id="6"/>
-						<input type="radio" name="attr_Path1" value="7" id="7"/>
-						<input type="radio" name="attr_Path1" value="8" id="8"/>
-						<input type="radio" name="attr_Path1" value="9" id="9"/>
-						<input type="radio" name="attr_Path1" value="10" id="10"/>
+					<input type="text"  id="attr_humanity_path" class="col-sm-12 col-md-12 col-form-label"/>	
+					<div class="col-sm-12 col-md-12" style="margin-top: 9px;text-align: center;">0
+						<input type="radio" name="attr_Path" value="0"  onclick="update_vc('humanity_total',0)" />
+						<input type="radio" name="attr_Path" value="1"  onclick="update_vc('humanity_total',1)" />
+						<input type="radio" name="attr_Path" value="2"  onclick="update_vc('humanity_total',2)" />
+						<input type="radio" name="attr_Path" value="3"  onclick="update_vc('humanity_total',3)" />
+						<input type="radio" name="attr_Path" value="4"  onclick="update_vc('humanity_total',4)" />
+						<input type="radio" name="attr_Path" value="5"  onclick="update_vc('humanity_total',5)" />
+						<input type="radio" name="attr_Path" value="6"  onclick="update_vc('humanity_total',6)" />
+						<input type="radio" name="attr_Path" value="7"  onclick="update_vc('humanity_total',7)" />
+						<input type="radio" name="attr_Path" value="8"  onclick="update_vc('humanity_total',8)" />
+						<input type="radio" name="attr_Path" value="9"  onclick="update_vc('humanity_total',9)" />
+						<input type="radio" name="attr_Path" value="10" onclick="update_vc('humanity_total',10)" />
+						10
 					</div>
 				</div>
 
 				<h3 style="text-align: center" data-i18n="Willpower">Willpower</h3>
 				<div class="form-group row">
 					<div class="col-sm-12 col-md-12" style="margin-top: 9px;text-align: center;">
-						<input type="radio" name="attr_Willpower" value="0" id="0"/>
-						<input type="radio" name="attr_Willpower" value="1" id="1"/>
-						<input type="radio" name="attr_Willpower" value="2" id="2"/>
-						<input type="radio" name="attr_Willpower" value="3" id="3"/>
-						<input type="radio" name="attr_Willpower" value="4" id="4"/>
-						<input type="radio" name="attr_Willpower" value="5" id="5"/>
-						<input type="radio" name="attr_Willpower" value="6" id="6"/>
-						<input type="radio" name="attr_Willpower" value="7" id="7"/>
-						<input type="radio" name="attr_Willpower" value="8" id="8"/>
-						<input type="radio" name="attr_Willpower" value="9" id="9"/>
-						<input type="radio" name="attr_Willpower" value="10" id="10"/>
+						0
+						<input type="radio" name="attr_Willpower" value="0" onclick="update_vc('willpower_total',0)"/>
+						<input type="radio" name="attr_Willpower" value="1" onclick="update_vc('willpower_total',1)"/>
+						<input type="radio" name="attr_Willpower" value="2" onclick="update_vc('willpower_total',2)"/>
+						<input type="radio" name="attr_Willpower" value="3" onclick="update_vc('willpower_total',3)"/>
+						<input type="radio" name="attr_Willpower" value="4" onclick="update_vc('willpower_total',4)"/>
+						<input type="radio" name="attr_Willpower" value="5" onclick="update_vc('willpower_total',5)"/>
+						<input type="radio" name="attr_Willpower" value="6" onclick="update_vc('willpower_total',6)"/>
+						<input type="radio" name="attr_Willpower" value="7" onclick="update_vc('willpower_total',7)"/>
+						<input type="radio" name="attr_Willpower" value="8" onclick="update_vc('willpower_total',8)"/>
+						<input type="radio" name="attr_Willpower" value="9" onclick="update_vc('willpower_total',9)"/>
+						<input type="radio" name="attr_Willpower" value="10" onclick="update_vc('willpower_total',10)"/>
+						10
 					</div>
 					<div class="col-sm-12 col-md-12" style="margin-top: 9px;text-align: center;">
-						<input type="checkbox" name="checkbox_Willpower" value="0" id="checkbox_Willpower0"/>
-						<input type="checkbox" name="checkbox_Willpower" value="1" id="checkbox_Willpower1"/>
-						<input type="checkbox" name="checkbox_Willpower" value="2" id="checkbox_Willpower2"/>
-						<input type="checkbox" name="checkbox_Willpower" value="3" id="checkbox_Willpower3"/>
-						<input type="checkbox" name="checkbox_Willpower" value="4" id="checkbox_Willpower4"/>
-						<input type="checkbox" name="checkbox_Willpower" value="5" id="checkbox_Willpower5"/>
-						<input type="checkbox" name="checkbox_Willpower" value="6" id="checkbox_Willpower6"/>
-						<input type="checkbox" name="checkbox_Willpower" value="7" id="checkbox_Willpower7"/>
-						<input type="checkbox" name="checkbox_Willpower" value="8" id="checkbox_Willpower8"/>
-						<input type="checkbox" name="checkbox_Willpower" value="9" id="checkbox_Willpower9"/>
-						<input type="checkbox" name="checkbox_Willpower" value="10" id="checkbox_Willpower10"/>
+						<input type="checkbox" name="checkbox_Willpower" value="0" onclick="update_vc('willpower_subtotal',0)"/>
+						<input type="checkbox" name="checkbox_Willpower" value="1" onclick="update_vc('willpower_subtotal',1)"/>
+						<input type="checkbox" name="checkbox_Willpower" value="2" onclick="update_vc('willpower_subtotal',2)"/>
+						<input type="checkbox" name="checkbox_Willpower" value="3" onclick="update_vc('willpower_subtotal',3)"/>
+						<input type="checkbox" name="checkbox_Willpower" value="4" onclick="update_vc('willpower_subtotal',4)"/>
+						<input type="checkbox" name="checkbox_Willpower" value="5" onclick="update_vc('willpower_subtotal',5)"/>
+						<input type="checkbox" name="checkbox_Willpower" value="6" onclick="update_vc('willpower_subtotal',6)"/>
+						<input type="checkbox" name="checkbox_Willpower" value="7" onclick="update_vc('willpower_subtotal',7)"/>
+						<input type="checkbox" name="checkbox_Willpower" value="8" onclick="update_vc('willpower_subtotal',8)"/>
+						<input type="checkbox" name="checkbox_Willpower" value="9" onclick="update_vc('willpower_subtotal',9)"/>
+						<input type="checkbox" name="checkbox_Willpower" value="10" onclick="update_vc('willpower_subtotal',10)"/>
 					</div>
 				</div>
 
 				<h3 style="text-align: center" data-i18n="Blood-Pool">Blood-Pool</h3>
+				<div id="Blood-Pool">
 				<div class="form-group row">						
 					<div class="col-sm-12 col-md-12" style="margin-top: 9px;text-align: center;">
-						<input type="checkbox" name="attr_BloodPool" value="1" id="attr_BloodPool1"/>
-						<input type="checkbox" name="attr_BloodPool" value="2" id="attr_BloodPool2"/>
-						<input type="checkbox" name="attr_BloodPool" value="3" id="attr_BloodPool3"/>
-						<input type="checkbox" name="attr_BloodPool" value="4" id="attr_BloodPool4"/>
-						<input type="checkbox" name="attr_BloodPool" value="5" id="attr_BloodPool5"/>
-						<input type="checkbox" name="attr_BloodPool" value="6" id="attr_BloodPool6"/>
-						<input type="checkbox" name="attr_BloodPool" value="7" id="attr_BloodPool7"/>
-						<input type="checkbox" name="attr_BloodPool" value="8" id="attr_BloodPool8"/>
-						<input type="checkbox" name="attr_BloodPool" value="9" id="attr_BloodPool9"/>
-						<input type="checkbox" name="attr_BloodPool" value="10" id="attr_BloodPool10"/>
+						<input type="checkbox" name="attr_BloodPool" value="1" />
+						<input type="checkbox" name="attr_BloodPool" value="2" />
+						<input type="checkbox" name="attr_BloodPool" value="3" />
+						<input type="checkbox" name="attr_BloodPool" value="4" />
+						<input type="checkbox" name="attr_BloodPool" value="5" />
+						<input type="checkbox" name="attr_BloodPool" value="6" />
+						<input type="checkbox" name="attr_BloodPool" value="7" />
+						<input type="checkbox" name="attr_BloodPool" value="8" />
+						<input type="checkbox" name="attr_BloodPool" value="9" />
+						<input type="checkbox" name="attr_BloodPool" value="10" />
 					</div>
 				</div>
 				<div class="form-group row">						
@@ -315,6 +319,7 @@
 						<input type="checkbox" name="attr_BloodPool" value="39" id="attr_BloodPool39"/>
 						<input type="checkbox" name="attr_BloodPool" value="40" id="attr_BloodPool40"/>
 					</div>
+				</div>
 				</div>
 			</div>
 			<!--end path-->

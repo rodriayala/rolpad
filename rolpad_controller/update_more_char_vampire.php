@@ -3,15 +3,15 @@ error_reporting(E_ALL);
 include 'inc/dbconfig.php';
 
 #update values
+
 $id_char 	= $_POST['id_char'];
-$id_update 	= $_POST['idUpdate'];
+$typeInsert	= $_POST['typeInsert'];
 $new_value 	= $_POST['newValue'];
 
 $db_con = conectar();
-$stmt = $db_con->prepare("UPDATE sheet_vampire_chars_chars_others SET actual_value= :new_value WHERE id_co = :id_update and id_char= :id_char");
+$stmt = $db_con->prepare("UPDATE sheet_vampire_chars SET $typeInsert= :new_value WHERE id_char = :id_char");
 $stmt->bindParam(":id_char", $id_char);
 $stmt->bindParam(":new_value", $new_value);
-$stmt->bindParam(":id_update", $id_update);
 
 $type ="";
 try {

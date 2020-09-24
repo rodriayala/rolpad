@@ -36,14 +36,14 @@ function fillBackgrounds(id,name) {
 	$("#backgrounds").append('<div class="form-group row">'
 							  	+ '<h4 class="col-sm-3 col-md-4 col-form-label" data-i18n="'+name+'">'+name+':</h4>'
 							  	+ 	'<div class="col-sm-8 col-md-8" style="margin-top: 9px;">'
-							  	+		'<input type="radio" name="'+id.name+'" value="1"  onclick="update_dis('+id+',1)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="2"  onclick="update_dis('+id+',2)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="3"  onclick="update_dis('+id+',3)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="4"  onclick="update_dis('+id+',4)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="5"  onclick="update_dis('+id+',5)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="6"  onclick="update_dis('+id+',6)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="7"  onclick="update_dis('+id+',7)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="8"  onclick="update_dis('+id+',8)" />'
+							  	+		'<input type="radio" name="'+id.name+'" value="1"  onclick="update_ba('+id+',1)" />'
+							  	+		'<input type="radio" name="'+id.name+'" value="2"  onclick="update_ba('+id+',2)" />'
+							  	+		'<input type="radio" name="'+id.name+'" value="3"  onclick="update_ba('+id+',3)" />'
+							  	+		'<input type="radio" name="'+id.name+'" value="4"  onclick="update_ba('+id+',4)" />'
+							  	+		'<input type="radio" name="'+id.name+'" value="5"  onclick="update_ba('+id+',5)" />'
+							  	+		'<input type="radio" name="'+id.name+'" value="6"  onclick="update_ba('+id+',6)" />'
+							  	+		'<input type="radio" name="'+id.name+'" value="7"  onclick="update_ba('+id+',7)" />'
+							  	+		'<input type="radio" name="'+id.name+'" value="8"  onclick="update_ba('+id+',8)" />'
 							  	+	'</div>'
 							  	+ '</div>');
 
@@ -93,7 +93,6 @@ function fillOthers(id,name) {
 /////////////////////update Advantages
 function update_at_ab(type,idUpdate,newValue)
 {
-	//alert(idChar+"-"+type+"-"+id_update+"-"+newValue);
 	$.ajax({
 		type: "POST",
 		url: subsite + "update_char_vampire.php",
@@ -107,7 +106,6 @@ function update_at_ab(type,idUpdate,newValue)
 
 function update_dis(idUpdate,newValue)
 {
-	//alert(idChar+"-"+type+"-"+id_update+"-"+newValue);
 	var id_char = $("#id_char").val(); 
 	$.ajax({
 		type: "POST",
@@ -122,7 +120,6 @@ function update_dis(idUpdate,newValue)
 
 function update_ba(idUpdate,newValue)
 {
-	//alert(idChar+"-"+type+"-"+id_update+"-"+newValue);
 	var id_char = $("#id_char").val(); 
 	$.ajax({
 		type: "POST",
@@ -137,12 +134,39 @@ function update_ba(idUpdate,newValue)
 
 function update_co(idUpdate,newValue)
 {
-	//alert(idChar+"-"+type+"-"+id_update+"-"+newValue);
 	var id_char = $("#id_char").val(); 
 	$.ajax({
 		type: "POST",
 		url: subsite + "update_others_char_vampire.php",
 		data: "id_char="+id_char+"&idUpdate="+idUpdate+"&newValue="+newValue
+	}).done(function(response) {
+
+	}).fail(function(jqXHR) {
+	  console.log(jqXHR.statusText);
+	});
+}
+
+function update_vi(idUpdate,newValue)
+{
+	var id_char = $("#id_char").val(); 
+	$.ajax({
+		type: "POST",
+		url: subsite + "update_virtues_char_vampire.php",
+		data: "id_char="+id_char+"&idUpdate="+idUpdate+"&newValue="+newValue
+	}).done(function(response) {
+
+	}).fail(function(jqXHR) {
+	  console.log(jqXHR.statusText);
+	});
+}
+
+function update_vc(typeInsert,newValue)
+{
+	var id_char = $("#id_char").val(); 
+	$.ajax({
+		type: "POST",
+		url: subsite + "update_more_char_vampire.php",
+		data: "id_char="+id_char+"&typeInsert="+typeInsert+"&newValue="+newValue
 	}).done(function(response) {
 
 	}).fail(function(jqXHR) {
@@ -165,6 +189,7 @@ $(function () {//Ready
 	$( "#attr_Clan" ).focus(function() { tiping("#attr_Clan"); });
 	$( "#attr_Generation" ).focus(function() { tiping("#attr_Generation"); });
 	$( "#attr_Sire" ).focus(function() { tiping("#attr_Sire"); });
+	$( "#attr_humanity_path" ).focus(function() { tiping("#attr_humanity_path"); });
 
 
 	function tiping(htmlTag)
@@ -180,10 +205,10 @@ $(function () {//Ready
 		  clearTimeout(typingTimer);
 		});
 
+
 		function doneTyping () {
 			var id_char = $("#id_char").val(); 
 			var newValue = $(htmlTag).val();  
-		  //alert(htmlTag);
 		    $.ajax({
 					type: "POST",
 					url: subsite + "update_char_head_vampire.php",
@@ -256,4 +281,12 @@ $(function () {//Ready
 	       }
 	 });
 	//End Search Others
+
+
+	var $checkboxes = $('#Blood-Pool div div input[type="checkbox"]');        
+    $checkboxes.change(function(){
+        var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
+        update_vc('bloodpool_total',countCheckedCheckboxes);       
+    });
+
  });//end Ready

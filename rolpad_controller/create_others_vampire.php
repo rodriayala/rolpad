@@ -26,4 +26,4 @@ try {
     $mensaje = "Error, surguio un problema al consultar el vampiro" . $e->getMessage();
     $type = "error";
 }
-$db_con=NULL;
+$stmt=NULL;

@@ -37,11 +37,15 @@ $(window).on('load', function () {//al principio de la carga seteo los valores a
 								    if(key5=="clan"){ document.getElementById("attr_Clan").value = val5; }
 								    if(key5=="generation"){ document.getElementById("attr_Generation").value = val5; }
 								    if(key5=="sire"){ document.getElementById("attr_Sire").value = val5; }
-								    if(key5=="humanity_path"){ document.getElementById("attr_Path1Name").value = val5; }
-								    if(key5=="humanity_total"){ document.vampire.attr_Path1.value=val5; }
-								    if(key5=="willpower_total"){ document.vampire.attr_Willpower.value=val5; }
-								    if(key5=="willpower_subtotal"){ document.getElementById("checkbox_Willpower"+val5).checked = true;}
-								    if(key5=="bloodpool_total"){ document.getElementById("attr_BloodPool"+val5).checked = true;}	
+								    if(key5=="humanity_path"){ document.getElementById("attr_humanity_path").value = val5; }
+								    if(key5=="humanity_total"){ $("input[name='attr_Path'][value='"+val5+"']").prop('checked', true); }
+								    if(key5=="willpower_total"){ $("input[name='attr_Willpower'][value='"+val5+"']").prop('checked', true); }
+								    if(key5=="willpower_subtotal"){ $("input[name='checkbox_Willpower'][value='"+val5+"']").prop('checked', true); }
+								    if(key5=="bloodpool_total"){ 
+								    	for(var i = 0; i <= val5; i++){						
+								    		$("input[name='attr_BloodPool'][value='"+i+"']").prop('checked', true);
+								    	}
+								    }	
 			 						if(key5=="experience"){ document.getElementById("experience").value = val5; }
 			 						///if(key5=="is_npc"){ document.getElementById("is_npc").value = val5; }
 						 												  			
@@ -117,8 +121,11 @@ $(window).on('load', function () {//al principio de la carga seteo los valores a
 														  	+ '</div>');	
 									}					  		
 								  	//end Others
-
-
+	  								//Virtues							  		
+							  		if(key4=="virtues"){ 
+							  			$("input[name='attr_virtues"+val4.id_vi+"'][value='"+val4.value+"']").prop('checked', true);
+							  		}					  		
+								  	//end Virtues
 				  			});	
 						});
 					});
