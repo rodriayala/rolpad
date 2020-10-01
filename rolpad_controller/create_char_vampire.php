@@ -117,6 +117,31 @@ try {
 
 ////////////////////////////////////////////////////////////////////////////////////////end virtues	
 
+/////////////////////////////////////////////////////////////////////////////////////////damage
+$db_con8 = conectar();
+$stmt8	 = $db_con7->prepare("SELECT * FROM `sheet_vampire_opt_damage` WHERE true ORDER BY `id`  ASC ");
+
+try {
+	$stmt8->execute();
+    while($row8=$stmt8->fetch(PDO::FETCH_ASSOC))
+    {
+		$id_opt_d 	= $row8['id']; 
+		$value 		= 0;
+
+		$db_con9 = conectar();
+		$stmt9 	 = $db_con9->prepare("INSERT INTO `sheet_vampire_chars_damage`(`id_char`, `id_opt_d`, `value`) VALUES (:id_char,:id_opt_d,:value)");
+
+		$stmt9->bindParam(":id_char", $id_char);
+		$stmt9->bindParam(":id_opt_d", $id_opt_d);
+		$stmt9->bindParam(":value", $value);
+		$stmt9->execute();
+    }
+ } catch (PDOException $e) {
+    $mensaje = "Error, surguio un problema al crear la virtud " . $e->getMessage();
+    $type = "error";
+}
+
+////////////////////////////////////////////////////////////////////////////////////////end damage	
 
 $stmt  = NULL;
 $stmt2 = NULL;
@@ -125,6 +150,8 @@ $stmt4 = NULL;
 $stmt5 = NULL;
 $stmt6 = NULL;
 $stmt7 = NULL;
+$stmt8 = NULL;
+$stmt9 = NULL;
 
 if($type == "error")
 {

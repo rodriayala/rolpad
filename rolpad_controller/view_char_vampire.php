@@ -304,11 +304,13 @@ $json_res["char"][] = $arrayachars_others;
 		$name 		= trim($arr_dam['name']);
 		$value 		= trim($arr_dam['value']);
 		$id_opt_ab 	= trim($arr_dam['id_opt_d']);
+		$penalty 	= trim($arr_dam['penalty']);
 
 		$json_res_par_dam= array("damage"=>array(											
 													"id" => $id,
 													"name" => $name,
-													"value" => $value
+													"value" => $value,
+													"penalty" => $penalty													
 												 )
 										
 							);

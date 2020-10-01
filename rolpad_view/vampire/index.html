@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Vampire char sheet</title>
+
 	<!-- CSS only -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
@@ -17,9 +18,20 @@
 	<script  src="../js/global_functions.js"></script>
 	<script  src="../js/view_char_vampire.js"></script>
 	<script  src="../js/update_char_vampire.js"></script>
+	<!-- end rolpad magic -->
+
+	<!-- style rolpad magic -->
+	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
 </head>
 <body>
-	<form name="vampire">	
+
+	<form name="vampire" class="fullscreen" id="vampire">	
+
+	<div id="notificationArea" class="notificationArea" >
+	 
+	</div>
+
+
 	<!--rasgos-->
 
 	<div class="container pb-3 text-center" id="rasgos">
@@ -248,7 +260,7 @@
 						10
 					</div>
 					<div class="col-sm-12 col-md-12" style="margin-top: 9px;text-align: center;">
-						<input type="checkbox" name="checkbox_Willpower" value="0" onclick="update_vc('willpower_subtotal',0)"/>
+						
 						<input type="checkbox" name="checkbox_Willpower" value="1" onclick="update_vc('willpower_subtotal',1)"/>
 						<input type="checkbox" name="checkbox_Willpower" value="2" onclick="update_vc('willpower_subtotal',2)"/>
 						<input type="checkbox" name="checkbox_Willpower" value="3" onclick="update_vc('willpower_subtotal',3)"/>
@@ -280,128 +292,60 @@
 				</div>
 				<div class="form-group row">						
 					<div class="col-sm-12 col-md-12" style="margin-top: 9px;text-align: center;">
-						<input type="checkbox" name="attr_BloodPool" value="11" id="attr_BloodPool11"/>
-						<input type="checkbox" name="attr_BloodPool" value="12" id="attr_BloodPool12"/>
-						<input type="checkbox" name="attr_BloodPool" value="13" id="attr_BloodPool13"/>
-						<input type="checkbox" name="attr_BloodPool" value="14" id="attr_BloodPool14"/>
-						<input type="checkbox" name="attr_BloodPool" value="15" id="attr_BloodPool15"/>
-						<input type="checkbox" name="attr_BloodPool" value="16" id="attr_BloodPool16"/>
-						<input type="checkbox" name="attr_BloodPool" value="17" id="attr_BloodPool17"/>
-						<input type="checkbox" name="attr_BloodPool" value="18" id="attr_BloodPool18"/>
-						<input type="checkbox" name="attr_BloodPool" value="19" id="attr_BloodPool19"/>
-						<input type="checkbox" name="attr_BloodPool" value="20" id="attr_BloodPool20"/>
+						<input type="checkbox" name="attr_BloodPool" value="11" />
+						<input type="checkbox" name="attr_BloodPool" value="12" />
+						<input type="checkbox" name="attr_BloodPool" value="13" />
+						<input type="checkbox" name="attr_BloodPool" value="14" />
+						<input type="checkbox" name="attr_BloodPool" value="15" />
+						<input type="checkbox" name="attr_BloodPool" value="16" />
+						<input type="checkbox" name="attr_BloodPool" value="17" />
+						<input type="checkbox" name="attr_BloodPool" value="18" />
+						<input type="checkbox" name="attr_BloodPool" value="19" />
+						<input type="checkbox" name="attr_BloodPool" value="20" />
 					</div>
 				</div>
 				<div class="form-group row">						
 					<div class="col-sm-12 col-md-12" style="margin-top: 9px;text-align: center;">
-						<input type="checkbox" name="attr_BloodPool" value="21" id="attr_BloodPool21"/>
-						<input type="checkbox" name="attr_BloodPool" value="22" id="attr_BloodPool22"/>
-						<input type="checkbox" name="attr_BloodPool" value="23" id="attr_BloodPool23"/>
-						<input type="checkbox" name="attr_BloodPool" value="24" id="attr_BloodPool24"/>
-						<input type="checkbox" name="attr_BloodPool" value="25" id="attr_BloodPool25"/>
-						<input type="checkbox" name="attr_BloodPool" value="26" id="attr_BloodPool26"/>
-						<input type="checkbox" name="attr_BloodPool" value="27" id="attr_BloodPool27"/>
-						<input type="checkbox" name="attr_BloodPool" value="28" id="attr_BloodPool28"/>
-						<input type="checkbox" name="attr_BloodPool" value="29" id="attr_BloodPool29"/>
-						<input type="checkbox" name="attr_BloodPool" value="30" id="attr_BloodPool30"/>
+						<input type="checkbox" name="attr_BloodPool" value="21" />
+						<input type="checkbox" name="attr_BloodPool" value="22" />
+						<input type="checkbox" name="attr_BloodPool" value="23" />
+						<input type="checkbox" name="attr_BloodPool" value="24" />
+						<input type="checkbox" name="attr_BloodPool" value="25" />
+						<input type="checkbox" name="attr_BloodPool" value="26" />
+						<input type="checkbox" name="attr_BloodPool" value="27" />
+						<input type="checkbox" name="attr_BloodPool" value="28" />
+						<input type="checkbox" name="attr_BloodPool" value="29" />
+						<input type="checkbox" name="attr_BloodPool" value="30" />
 					</div>
 				</div>
 				<div class="form-group row">						
 					<div class="col-sm-12 col-md-12" style="margin-top: 9px;text-align: center;">
-						<input type="checkbox" name="attr_BloodPool" value="31" id="attr_BloodPool31"/>
-						<input type="checkbox" name="attr_BloodPool" value="32" id="attr_BloodPool32">
-						<input type="checkbox" name="attr_BloodPool" value="33" id="attr_BloodPool33"/>
-						<input type="checkbox" name="attr_BloodPool" value="34" id="attr_BloodPool34"/>
-						<input type="checkbox" name="attr_BloodPool" value="35" id="attr_BloodPool35"/>
-						<input type="checkbox" name="attr_BloodPool" value="36" id="attr_BloodPool36"/>
-						<input type="checkbox" name="attr_BloodPool" value="37" id="attr_BloodPool37"/>
-						<input type="checkbox" name="attr_BloodPool" value="38" id="attr_BloodPool38"/>
-						<input type="checkbox" name="attr_BloodPool" value="39" id="attr_BloodPool39"/>
-						<input type="checkbox" name="attr_BloodPool" value="40" id="attr_BloodPool40"/>
+						<input type="checkbox" name="attr_BloodPool" value="31" />
+						<input type="checkbox" name="attr_BloodPool" value="32" />
+						<input type="checkbox" name="attr_BloodPool" value="33" />
+						<input type="checkbox" name="attr_BloodPool" value="34" />
+						<input type="checkbox" name="attr_BloodPool" value="35" />
+						<input type="checkbox" name="attr_BloodPool" value="36" />
+						<input type="checkbox" name="attr_BloodPool" value="37" />
+						<input type="checkbox" name="attr_BloodPool" value="38" />
+						<input type="checkbox" name="attr_BloodPool" value="39" />
+						<input type="checkbox" name="attr_BloodPool" value="40" />
 					</div>
 				</div>
 				</div>
 			</div>
 			<!--end path-->
 			<!--Healt-->
-			<div class="col-12 col-sm-4 col-md-4">
-				<div class="form-group row">						
-					<h4 style="text-align: center" data-i18n="Bruised">Bruised</h4>
-					<div class="col-sm-8 col-md-8" style="margin-top: 9px;">
-						<select name="attr_Bruised"> 
-							<option></option> 
-							<option value="Bashing">-</option>
-							<option value="Leathal">/</option>
-							<option value="Aggravated">X</option> 
-						</select>
-					</div>
-				</div>
-				<div class="form-group row">						
-					<h4 style="text-align: center" data-i18n="Hurt">Hurt -1</h4>
-					<div class="col-sm-8 col-md-8" style="margin-top: 9px;">
-						<input type="checkbox" name="Hurt" />
-					</div>
-				</div>
-				<div class="form-group row">						
-					<h4 style="text-align: center" data-i18n="Injured">Injured -1</h4>
-					<div class="col-sm-8 col-md-8" style="margin-top: 9px;">
-						<select name="attr_Injured"> 
-							<option></option>
-							<option value="Bashing">-</option>
-							<option value="Leathal">/</option>
-							<option value="Aggravated">X</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-group row">						
-					<h4 style="text-align: center" data-i18n="Wounded">Wounded -2</h4>
-					<div class="col-sm-8 col-md-8" style="margin-top: 9px;">
-						<select name="attr_Wounded"> 
-							<option></option>
-							<option value="Bashing">-</option>
-							<option value="Leathal">/</option>
-							<option value="Aggravated">X</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-group row">						
-					<h4 style="text-align: center" data-i18n="Wounded">Mauled -2</h4>
-					<div class="col-sm-8 col-md-8" style="margin-top: 9px;">
-						<select name="attr_Mauled"> 
-							<option></option>
-							<option value="Bashing">-</option>
-							<option value="Leathal">/</option>
-							<option value="Aggravated">X</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-group row">						
-					<h4 style="text-align: center" data-i18n="Wounded">Crippled -5</h4>
-					<div class="col-sm-8 col-md-8" style="margin-top: 9px;">
-						<select name="attr_Crippled"> 
-							<option></option>
-							<option value="Bashing">-</option>
-							<option value="Leathal">/</option>
-							<option value="Aggravated">X</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-group row">						
-					<h4 style="text-align: center" data-i18n="Wounded">Incapacitated</h4>
-					<div class="col-sm-8 col-md-6" style="margin-top: 9px;">
-						<select name="attr_Incapacitated"> 
-							<option></option>
-							<option value="Bashing">-</option>
-							<option value="Leathal">/</option> 
-							<option value="Aggravated">X</option>
-						</select>
-					</div>
+			<div class="col-12 col-sm-4 col-md-4 " >
+				<h3 style="text-align: center" data-i18n="Healt">Healt</h3>
+				<div id="damage">
+					
 				</div>
 
 				<h3 style="text-align: center" data-i18n="Experience">Experience</h3>
 				<div class="form-group row">
 					<div class="col-sm-12 col-md-12" style="margin-top: 9px;">
-						<input type="text"  name="experience" id="experience" class="form-control">
+						<input type="number" step="1"  name="attr_experience" id="attr_experience" class="form-control">
 					</div>
 				</div>
 			</div>

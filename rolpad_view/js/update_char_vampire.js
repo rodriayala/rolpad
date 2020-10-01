@@ -24,6 +24,8 @@ function fillDicipline(id,name) {
 		data: "id_char="+id_char+"&idCreate="+id
 	}).done(function(response) {
 
+		show_alert(response);
+
 	}).fail(function(jqXHR) {
 	  console.log(jqXHR.statusText);
 	});
@@ -98,7 +100,7 @@ function update_at_ab(type,idUpdate,newValue)
 		url: subsite + "update_char_vampire.php",
 		data: "type="+type+"&idUpdate="+idUpdate+"&newValue="+newValue
 	}).done(function(response) {
-
+		show_alert(response);
 	}).fail(function(jqXHR) {
 	  console.log(jqXHR.statusText);
 	});
@@ -112,7 +114,7 @@ function update_dis(idUpdate,newValue)
 		url: subsite + "update_discipline_char_vampire.php",
 		data: "id_char="+id_char+"&idUpdate="+idUpdate+"&newValue="+newValue
 	}).done(function(response) {
-
+		show_alert(response);
 	}).fail(function(jqXHR) {
 	  console.log(jqXHR.statusText);
 	});
@@ -126,7 +128,7 @@ function update_ba(idUpdate,newValue)
 		url: subsite + "update_backgrounds_char_vampire.php",
 		data: "id_char="+id_char+"&idUpdate="+idUpdate+"&newValue="+newValue
 	}).done(function(response) {
-
+		show_alert(response);
 	}).fail(function(jqXHR) {
 	  console.log(jqXHR.statusText);
 	});
@@ -140,7 +142,7 @@ function update_co(idUpdate,newValue)
 		url: subsite + "update_others_char_vampire.php",
 		data: "id_char="+id_char+"&idUpdate="+idUpdate+"&newValue="+newValue
 	}).done(function(response) {
-
+		show_alert(response);
 	}).fail(function(jqXHR) {
 	  console.log(jqXHR.statusText);
 	});
@@ -154,7 +156,7 @@ function update_vi(idUpdate,newValue)
 		url: subsite + "update_virtues_char_vampire.php",
 		data: "id_char="+id_char+"&idUpdate="+idUpdate+"&newValue="+newValue
 	}).done(function(response) {
-
+		show_alert(response);
 	}).fail(function(jqXHR) {
 	  console.log(jqXHR.statusText);
 	});
@@ -168,12 +170,41 @@ function update_vc(typeInsert,newValue)
 		url: subsite + "update_more_char_vampire.php",
 		data: "id_char="+id_char+"&typeInsert="+typeInsert+"&newValue="+newValue
 	}).done(function(response) {
-
+		show_alert(response);
 	}).fail(function(jqXHR) {
 	  console.log(jqXHR.statusText);
 	});
 }
+
+function update_damage(typeInsert,name)
+{
+	var nameid = document.getElementById(name).value;
+	var newValue = $("#id_char").val(); 
+
+	$.ajax({
+		type: "POST",
+		url: subsite + "update_damage_char_vampire.php",
+		data: "id_char="+id_char+"&typeInsert="+typeInsert+"&newValue="+newValue
+	}).done(function(response) {
+		show_alert(response);
+	}).fail(function(jqXHR) {
+	  console.log(jqXHR.statusText);
+	});	
+}
 /////////////////////end update Advantages
+
+/////////////////////more functions
+function show_alert(message)
+{
+	let id = Math.floor(Math.random() * 10000);
+	$("#notificationArea").append('<div class="alert-top alert alert-primary " role="alert" id="alert'+id+'">'
+	  						+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+	  						+'<strong>Success!</strong> ' + message
+						 +'</div>');
+	setTimeout(function(){ $("#alert"+id+"").css("display", "none"); }, 3000);
+
+}
+/////////////////////end more functions
 
 $(function () {//Ready
 	var typingTimer;                //timer identifier
@@ -190,10 +221,10 @@ $(function () {//Ready
 	$( "#attr_Generation" ).focus(function() { tiping("#attr_Generation"); });
 	$( "#attr_Sire" ).focus(function() { tiping("#attr_Sire"); });
 	$( "#attr_humanity_path" ).focus(function() { tiping("#attr_humanity_path"); });
-
+	$( "#attr_experience" ).focus(function() { tiping("#attr_experience"); });
 
 	function tiping(htmlTag)
-	{
+	{                     
 		var $input = $(htmlTag);
 
 		$input.on('keyup', function () {		//on keyup, start the countdown
@@ -215,6 +246,8 @@ $(function () {//Ready
 					data: "id_char="+ id_char + '&htmlTag=' + htmlTag + '&newValue=' + newValue
 				}).done(function(response) {
 		
+					show_alert(response);
+
 				}).fail(function(jqXHR) {
 				  console.log(jqXHR.statusText);
 			});
@@ -288,5 +321,17 @@ $(function () {//Ready
         var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
         update_vc('bloodpool_total',countCheckedCheckboxes);       
     });
+
+    //Alert timeout
+	/*window.setTimeout(function() {
+	    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+	    	
+	    	$("#alert").css("display", "none");
+	    	alert(11);
+	        //$(this).remove(); 
+	    });
+	}, 4500);*/
+	//end Alert
+
 
  });//end Ready

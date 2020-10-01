@@ -17,11 +17,18 @@ $stmt = $db_con->prepare("UPDATE $table SET `actual_value`=:new_value WHERE  id 
 $stmt->bindParam(":id", $id_update);
 $stmt->bindParam(":new_value", $new_value);
 
-$type ="";
 try {
    	if($stmt->execute()) 
 	{
-		echo "updateok";
+		if($stmt->rowCount()>0)
+		{
+			if($type=="1") {echo "chars attributes successfully";}
+			if($type=="2") {echo "chars abilities successfully";}
+		}else{
+			echo "updateno";	
+		}
+		//echo "filas insertadas: ". $stmt->affected_rows;
+		//
 	}else{
 		echo "updateno";
 	}
@@ -29,5 +36,5 @@ try {
     $mensaje = "Error, surguio un problema al consultar el vampiro" . $e->getMessage();
     $type = "error";
 }
-//echo json_encode($json_res);die;
-//var_dump($json_res); die;
+
+$db_con = null;
