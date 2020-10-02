@@ -7,20 +7,26 @@ include 'inc/dbconfig.php';
 $id_char 	= $_POST['id_char'];
 $typeInsert	= $_POST['typeInsert'];
 $new_value 	= $_POST['newValue'];
+$id 		= $_POST['id'];
 
 $db_con = conectar();
-$stmt = $db_con->prepare("UPDATE sheet_vampire_chars_damage SET $typeInsert= :new_value WHERE id_char = :id_char");
-$stmt->bindParam(":id_char", $id_char);
+$stmt = $db_con->prepare("UPDATE sheet_vampire_chars_damage SET value = :new_value WHERE id = :id");
+$stmt->bindParam(":id", $id);
 $stmt->bindParam(":new_value", $new_value);
 
 $type ="";
 try {
    	if($stmt->execute()) 
-	{
-		echo "updateok";
+	{		
+		if($stmt->rowCount()>0)
+		{
+			echo "chars damage successfully";
+		}else{
+			echo "chars damage Error";	
+		}		
 	}else{
-		echo "updateno";
-	}
+		echo "chars damage Error";
+	}	
 } catch (PDOException $e) {
     $mensaje = "Error, surguio un problema al consultar el vampiro" . $e->getMessage();
     $type = "error";

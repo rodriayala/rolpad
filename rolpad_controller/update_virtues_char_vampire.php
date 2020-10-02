@@ -16,10 +16,15 @@ $stmt->bindParam(":id_char", $id_char);
 $type ="";
 try {
    	if($stmt->execute()) 
-	{
-		echo "updateok";
+	{		
+		if($stmt->rowCount()>0)
+		{
+			echo "chars virtues successfully";
+		}else{
+			echo "chars virtues Error";	
+		}		
 	}else{
-		echo "updateno";
+		echo "chars virtues Error";
 	}
 } catch (PDOException $e) {
     echo $mensaje = "Error, surguio un problema al consultar el vampiro" . $e->getMessage();

@@ -25,12 +25,12 @@ try {
 			if($type=="1") {echo "chars attributes successfully";}
 			if($type=="2") {echo "chars abilities successfully";}
 		}else{
-			echo "updateno";	
+			echo "chars attributes Error";	
 		}
 		//echo "filas insertadas: ". $stmt->affected_rows;
 		//
 	}else{
-		echo "updateno";
+		echo "chars attributes Error";	
 	}
 } catch (PDOException $e) {
     $mensaje = "Error, surguio un problema al consultar el vampiro" . $e->getMessage();

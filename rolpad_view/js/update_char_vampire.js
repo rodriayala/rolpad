@@ -176,15 +176,15 @@ function update_vc(typeInsert,newValue)
 	});
 }
 
-function update_damage(typeInsert,name)
+function update_damage(id,typeInsert,name)
 {
-	var nameid = document.getElementById(name).value;
-	var newValue = $("#id_char").val(); 
+	var newValue = document.getElementById(name).value;
+	var id_char = $("#id_char").val(); 
 
 	$.ajax({
 		type: "POST",
 		url: subsite + "update_damage_char_vampire.php",
-		data: "id_char="+id_char+"&typeInsert="+typeInsert+"&newValue="+newValue
+		data: "id_char="+id_char+"&typeInsert="+typeInsert+"&newValue="+newValue+"&id="+id
 	}).done(function(response) {
 		show_alert(response);
 	}).fail(function(jqXHR) {

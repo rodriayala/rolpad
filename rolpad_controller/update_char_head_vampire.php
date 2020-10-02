@@ -15,12 +15,19 @@ $stmt->bindParam(":new_value", $new_value);
 
 $type ="";
 try {
+
    	if($stmt->execute()) 
-	{
-		echo "updateok";
+	{		
+		if($stmt->rowCount()>0)
+		{
+			echo "chars $htmlTag successfully";
+		}else{
+			echo "chars $htmlTag Error";	
+		}		
 	}else{
-		echo "updateno";
+		echo "chars $htmlTag Error";
 	}
+
 } catch (PDOException $e) {
     $mensaje = "Error, surguio un problema al consultar el vampiro" . $e->getMessage();
     $type = "error";

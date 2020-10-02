@@ -17,11 +17,16 @@ $stmt->bindParam(":actual_value", $actual_value);
 $type ="";
 try {
    	if($stmt->execute()) 
-	{
-		echo "createok";
+	{		
+		if($stmt->rowCount()>0)
+		{
+			echo "chars disciplines successfully";
+		}else{
+			echo "chars disciplines Error";	
+		}		
 	}else{
-		echo "createno";
-	}
+		echo "chars disciplines Error";
+	}	
 } catch (PDOException $e) {
     $mensaje = "Error, surguio un problema al consultar el vampiro" . $e->getMessage();
     $type = "error";

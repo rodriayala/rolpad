@@ -17,9 +17,9 @@ $type ="";
 try {
    	if($stmt->execute()) 
 	{
-		echo "updateok";
+		echo "chars others successfully";
 	}else{
-		echo "updateno";
+		echo "chars others Error";
 	}
 } catch (PDOException $e) {
     $mensaje = "Error, surguio un problema al consultar el vampiro" . $e->getMessage();

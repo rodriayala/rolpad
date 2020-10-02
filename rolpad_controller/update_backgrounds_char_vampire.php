@@ -15,12 +15,19 @@ $stmt->bindParam(":id_update", $id_update);
 
 $type ="";
 try {
+
    	if($stmt->execute()) 
-	{
-		echo "updateok";
+	{		
+		if($stmt->rowCount()>0)
+		{
+			echo "chars backgrounds successfully";
+		}else{
+			echo "chars backgrounds Error";	
+		}		
 	}else{
-		echo "updateno";
+		echo "chars backgrounds Error";
 	}
+
 } catch (PDOException $e) {
     $mensaje = "Error, surguio un problema al consultar el vampiro" . $e->getMessage();
     $type = "error";

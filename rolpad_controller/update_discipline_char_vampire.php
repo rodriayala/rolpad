@@ -16,11 +16,16 @@ $stmt->bindParam(":id_update", $id_update);
 $type ="";
 try {
    	if($stmt->execute()) 
-	{
-		echo "updateok";
+	{		
+		if($stmt->rowCount()>0)
+		{
+			echo "chars disciplines successfully";
+		}else{
+			echo "chars disciplines Error";	
+		}		
 	}else{
-		echo "updateno";
-	}
+		echo "chars disciplines Error";
+	}	
 } catch (PDOException $e) {
     $mensaje = "Error, surguio un problema al consultar el vampiro" . $e->getMessage();
     $type = "error";

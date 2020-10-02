@@ -16,11 +16,16 @@ $stmt->bindParam(":new_value", $new_value);
 $type ="";
 try {
    	if($stmt->execute()) 
-	{
-		echo "updateok";
+	{		
+		if($stmt->rowCount()>0)
+		{
+			echo "chars $typeInsert successfully";
+		}else{
+			echo "chars $typeInsert Error";	
+		}		
 	}else{
-		echo "updateno";
-	}
+		echo "chars $typeInsert Error";
+	}		
 } catch (PDOException $e) {
     $mensaje = "Error, surguio un problema al consultar el vampiro" . $e->getMessage();
     $type = "error";

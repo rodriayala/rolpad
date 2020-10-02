@@ -131,11 +131,11 @@ $(window).on('load', function () {//al principio de la carga seteo los valores a
 									$("#damage").append(`<div class="form-group row justify-content-center align-items-center">`						
 															+ `<h4  data-i18n="`+val4.name+`">`+val4.name+` `+val4.penalty+`</h4>`
 															+	`<div style="margin-top: 9px; padding-left: 10px;">`
-															+		`<select name="attr_`+val4.name+`" id="attr_`+val4.name+`" class="form-control" onchange="update_damage('`+val4.name+`','attr_`+val4.name+`')">` 
-															+			`<option value="0" `+ (val4.value == 0 ? "checked": " ") +`></option>` 
-															+			`<option value="1" `+ (val4.value == 1 ? "checked": " ") +`>-</option>`
-															+			`<option value="2" `+ (val4.value == 2 ? "checked": " ") +`>/</option>`
-															+			`<option value="3" `+ (val4.value == 3 ? "checked": " ") +`>X</option>` 
+															+		`<select name="attr_`+val4.name+`" id="attr_`+val4.name+`" class="form-control" onchange="update_damage('`+val4.id+`','`+val4.name+`','attr_`+val4.name+`')">` 
+															+			`<option value="0" `+ (val4.value == 0 ? "selected": " ") +`></option>` 
+															+			`<option value="1" `+ (val4.value == 1 ? "selected": " ") +`>-</option>`
+															+			`<option value="2" `+ (val4.value == 2 ? "selected": " ") +`>/</option>`
+															+			`<option value="3" `+ (val4.value == 3 ? "selected": " ") +`>X</option>` 
 															+		`</select>`
 															+	`</div>`
 														+	`</div>`);	
