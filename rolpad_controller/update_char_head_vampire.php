@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 include 'inc/dbconfig.php';
-
+include 'inc/global_functions.php';
 #update values
 $id_char 	= $_POST['id_char'];
 $htmlTag 	= strtolower(trim(substr($_POST['htmlTag'], 6)));
@@ -20,6 +20,7 @@ try {
 	{		
 		if($stmt->rowCount()>0)
 		{
+			audit($id_char,$new_value,'0','sheet_vampire_chars','',$htmlTag);
 			echo "chars $htmlTag successfully";
 		}else{
 			echo "chars $htmlTag Error";	

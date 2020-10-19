@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 include 'inc/dbconfig.php';
-
+include 'inc/global_functions.php';
 #update values
 $id_char 	= $_POST['id_char'];
 $id_update 	= $_POST['idUpdate'];
@@ -17,6 +17,7 @@ $type ="";
 try {
    	if($stmt->execute()) 
 	{
+		audit($id_char,$new_value,'0','sheet_vampire_chars_chars_others',$id_update,'');
 		echo "chars others successfully";
 	}else{
 		echo "chars others Error";

@@ -95,10 +95,11 @@ function fillOthers(id,name) {
 /////////////////////update Advantages
 function update_at_ab(type,idUpdate,newValue)
 {
+	var id_char = $("#id_char").val(); 
 	$.ajax({
 		type: "POST",
 		url: subsite + "update_char_vampire.php",
-		data: "type="+type+"&idUpdate="+idUpdate+"&newValue="+newValue
+		data: "type="+type+"&idUpdate="+idUpdate+"&newValue="+newValue+"&id_char="+id_char
 	}).done(function(response) {
 		show_alert(response);
 	}).fail(function(jqXHR) {
@@ -207,6 +208,8 @@ function show_alert(message)
 /////////////////////end more functions
 
 $(function () {//Ready
+
+
 	var typingTimer;                //timer identifier
 	var doneTypingInterval = 1000;  //time in ms
 	//var $input = "";
@@ -322,16 +325,7 @@ $(function () {//Ready
         update_vc('bloodpool_total',countCheckedCheckboxes);       
     });
 
-    //Alert timeout
-	/*window.setTimeout(function() {
-	    $(".alert").fadeTo(500, 0).slideUp(500, function(){
-	    	
-	    	$("#alert").css("display", "none");
-	    	alert(11);
-	        //$(this).remove(); 
-	    });
-	}, 4500);*/
-	//end Alert
+
 
 
  });//end Ready

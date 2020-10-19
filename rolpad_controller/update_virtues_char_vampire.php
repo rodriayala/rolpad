@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 include 'inc/dbconfig.php';
+include 'inc/global_functions.php';
 
 #update values
 $id_char 	= $_POST['id_char'];
@@ -19,6 +20,7 @@ try {
 	{		
 		if($stmt->rowCount()>0)
 		{
+			audit($id_char,$new_value,'0','sheet_vampire_chars_virtues',$id_update);
 			echo "chars virtues successfully";
 		}else{
 			echo "chars virtues Error";	

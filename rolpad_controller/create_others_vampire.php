@@ -20,6 +20,7 @@ try {
 	{		
 		if($stmt->rowCount()>0)
 		{
+			audit($id_char,$actual_value,'0','sheet_vampire_chars_chars_others',$id_create,'create_chars_others ');
 			echo "chars others successfully";
 		}else{
 			echo "chars others Error";	

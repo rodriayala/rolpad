@@ -20,6 +20,7 @@ try {
 	{		
 		if($stmt->rowCount()>0)
 		{
+			audit($id_char,$new_value,'0','sheet_vampire_chars_disciplines',$id_create,'create discipline');
 			echo "chars disciplines successfully";
 		}else{
 			echo "chars disciplines Error";	

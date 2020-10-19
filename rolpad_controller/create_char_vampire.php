@@ -1,6 +1,6 @@
 <?php
-
 include("inc/dbconfig.php");
+include 'inc/global_functions.php';
 #echo json_encode(array("mensaje" => "entro"));die;
 
 ############PRIMERO INSERTO LOS DATOS NECESARIOS PARA HACER UN UPDATE
@@ -34,6 +34,8 @@ try {
     {
 		$stmt 	= $db_con->query("SELECT LAST_INSERT_ID()");
         $id_char = $stmt->fetchColumn(); 
+
+        audit($id_char,'User Number: ','0','sheet_vampire_chars',$id_char,'Vampire Create');
     }
 } catch (PDOException $e) {
     $mensaje = "Error, surguio un problema al crear el vampiro" . $e->getMessage();

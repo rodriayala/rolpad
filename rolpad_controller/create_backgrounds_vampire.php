@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 include 'inc/dbconfig.php';
-
+include 'inc/global_functions.php';
 #create values
 $id_char 	= $_POST['id_char'];
 $id_create 	= $_POST['idCreate'];
@@ -20,6 +20,10 @@ try {
 	{		
 		if($stmt->rowCount()>0)
 		{
+			$stmt 	= $db_con->query("SELECT LAST_INSERT_ID()");
+        	$new_value = $stmt->fetchColumn(); 
+
+			audit($id_char,$new_value,'0','sheet_vampire_chars_backgrounds',$id_create,'chars_backgrounds');
 			echo "chars backgrounds successfully";
 		}else{
 			echo "chars backgrounds Error";	

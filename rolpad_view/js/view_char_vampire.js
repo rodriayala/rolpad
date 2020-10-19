@@ -2,8 +2,25 @@
 
 var id_char = getParameterByName('id');
 
+function dice_combination(disciplineID,actual_value,name)
+{
+	//alert(disciplineID+" "+actual_value+" "+name);
+
+	$.ajax({
+		type: "POST",
+	    url: subsite + "disciplines_dice_combinations.php",
+	    data: "disciplineid="+disciplineID+"&value="+actual_value+"&name="+name,
+	    	success: function(html) {
+	                 $("#displayOthers").html(html).show();
+	        }
+	});
+	//let elements = document.getElementsByName(name);
+
+	//$("#disciplines").append('<div class="form-group row">');
+}
+
 $(window).on('load', function () {//al principio de la carga seteo los valores actuales
-      //alert(charId);
+ 
 	$(function () {//Ready
       ///////////////////get basics
       	$.ajax({
@@ -71,17 +88,17 @@ $(window).on('load', function () {//al principio de la carga seteo los valores a
 
 								  	//disciplines							  		
 							  		if(key4=="disciplines"){ 
-									$("#disciplines").append('<div class="form-group row">'
+									$("#disciplines").append(`<div class="form-group row">`
 														  	+ '<h4 class="col-sm-3 col-md-4 col-form-label" data-i18n="'+val4.name+'">'+val4.name+':</h4>'
-														  	+ 	'<div class="col-sm-8 col-md-8" style="margin-top: 9px;">'
-														  	+		'<input type="radio" name="'+val4.id_opt_di+val4.name+'" value="1" '+ (val4.actual_value == 1 ? "checked": " ") +' onclick="update_dis('+val4.id_opt_di+',1)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_di+val4.name+'" value="2" '+ (val4.actual_value == 2 ? "checked": " ") +' onclick="update_dis('+val4.id_opt_di+',2)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_di+val4.name+'" value="3" '+ (val4.actual_value == 3 ? "checked": " ") +' onclick="update_dis('+val4.id_opt_di+',3)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_di+val4.name+'" value="4" '+ (val4.actual_value == 4 ? "checked": " ") +' onclick="update_dis('+val4.id_opt_di+',4)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_di+val4.name+'" value="5" '+ (val4.actual_value == 5 ? "checked": " ") +' onclick="update_dis('+val4.id_opt_di+',5)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_di+val4.name+'" value="6" '+ (val4.actual_value == 6 ? "checked": " ") +' onclick="update_dis('+val4.id_opt_di+',6)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_di+val4.name+'" value="7" '+ (val4.actual_value == 7 ? "checked": " ") +' onclick="update_dis('+val4.id_opt_di+',7)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_di+val4.name+'" value="8" '+ (val4.actual_value == 8 ? "checked": " ") +' onclick="update_dis('+val4.id_opt_di+',8)" />'
+														  	+ 	'<div class="col-sm-8 col-md-8" style="margin-top: 9px;" >'
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="1" `+ (val4.actual_value == 1 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,1)" onmouseover="dice_combination(`+val4.id_opt_di+`,1,'`+val4.id_opt_di+val4.name+`')"/>`
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="2" `+ (val4.actual_value == 2 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,2)" onmouseover="dice_combination(`+val4.id_opt_di+`,2,'`+val4.id_opt_di+val4.name+`')"/>`
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="3" `+ (val4.actual_value == 3 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,3)" onmouseover="dice_combination(`+val4.id_opt_di+`,3,'`+val4.id_opt_di+val4.name+`')"/>`
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="4" `+ (val4.actual_value == 4 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,4)" onmouseover="dice_combination(`+val4.id_opt_di+`,4,'`+val4.id_opt_di+val4.name+`')"/>`
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="5" `+ (val4.actual_value == 5 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,5)" onmouseover="dice_combination(`+val4.id_opt_di+`,5,'`+val4.id_opt_di+val4.name+`')"/>`
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="6" `+ (val4.actual_value == 6 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,6)" onmouseover="dice_combination(`+val4.id_opt_di+`,6,'`+val4.id_opt_di+val4.name+`')"/>`
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="7" `+ (val4.actual_value == 7 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,7)" onmouseover="dice_combination(`+val4.id_opt_di+`,7,'`+val4.id_opt_di+val4.name+`')"/>`
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="8" `+ (val4.actual_value == 8 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,8)" onmouseover="dice_combination(`+val4.id_opt_di+`,8,'`+val4.id_opt_di+val4.name+`')"/>`
 														  	+	'</div>'
 														  	+ '</div>');	
 									}					  		
@@ -152,5 +169,7 @@ $(window).on('load', function () {//al principio de la carga seteo los valores a
 		  console.log(jqXHR.statusText);
 	});
       ///////////////////end get basics
+
   });//end Ready
+      
  });
