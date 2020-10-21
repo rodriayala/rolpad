@@ -24,3 +24,43 @@
     z-index: 2;
 }
 
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+/*.tooltip*/ 
+.tooltiptext {
+  /*visibility: hidden;*/
+  width: 190px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  /*padding: 5px 0;*/
+
+  /* Position the tooltip 
+  position: absolute;*/
+  z-index: 1;
+  margin-top: 10px;
+}
+
+.tooltiptext .card-body{
+  padding: 0px !important;
+}
+
+.tooltiptext .card-title{
+  margin-bottom: 5px !important;
+}
+
+.tooltiptext h5{
+  font-size: 1rem !important;
+}
+
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
