@@ -6,14 +6,14 @@ function fillDicipline(id,name) {
 	$("#disciplines").append('<div class="form-group row">'
 							  	+ '<h4 class="col-sm-3 col-md-4 col-form-label" data-i18n="'+name+'">'+name+':</h4>'
 							  	+ 	'<div class="col-sm-8 col-md-8" style="margin-top: 9px;">'
-							  	+		'<input type="radio" name="'+id.name+'" value="1"  onclick="update_dis('+id+',1)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="2"  onclick="update_dis('+id+',2)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="3"  onclick="update_dis('+id+',3)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="4"  onclick="update_dis('+id+',4)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="5"  onclick="update_dis('+id+',5)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="6"  onclick="update_dis('+id+',6)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="7"  onclick="update_dis('+id+',7)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="8"  onclick="update_dis('+id+',8)" />'
+							  	+		`<input type="radio" name="`+id.name+`" value="1"  onclick="update_dis(`+id+`,1,'`+name+`')" onmouseover="dice_combination(`+id+`,1,'`+id+name+`')" onmouseout="dice_out_combination(`+id+`,1,'`+id+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="2"  onclick="update_dis(`+id+`,2,'`+name+`')" onmouseover="dice_combination(`+id+`,2,'`+id+name+`')" onmouseout="dice_out_combination(`+id+`,2,'`+id+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="3"  onclick="update_dis(`+id+`,3,'`+name+`')" onmouseover="dice_combination(`+id+`,3,'`+id+name+`')" onmouseout="dice_out_combination(`+id+`,3,'`+id+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="4"  onclick="update_dis(`+id+`,4,'`+name+`')" onmouseover="dice_combination(`+id+`,4,'`+id+name+`')" onmouseout="dice_out_combination(`+id+`,4,'`+id+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="5"  onclick="update_dis(`+id+`,5,'`+name+`')" onmouseover="dice_combination(`+id+`,5,'`+id+name+`')" onmouseout="dice_out_combination(`+id+`,5,'`+id+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="6"  onclick="update_dis(`+id+`,6,'`+name+`')" onmouseover="dice_combination(`+id+`,6,'`+id+name+`')" onmouseout="dice_out_combination(`+id+`,6,'`+id+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="7"  onclick="update_dis(`+id+`,7,'`+name+`')" onmouseover="dice_combination(`+id+`,7,'`+id+name+`')" onmouseout="dice_out_combination(`+id+`,7,'`+id+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="8"  onclick="update_dis(`+id+`,8,'`+name+`')" onmouseover="dice_combination(`+id+`,8,'`+id+name+`')" onmouseout="dice_out_combination(`+id+`,8,'`+id+name+`')" />`
 							  	+	'</div>'
 							  	+ '</div>');
 
@@ -21,7 +21,7 @@ function fillDicipline(id,name) {
 	$.ajax({
 		type: "POST",
 		url: subsite + "create_disciplines_vampire.php",
-		data: "id_char="+id_char+"&idCreate="+id
+		data: "id_char="+id_char+"&idCreate="+id+"&name="+name
 	}).done(function(response) {
 
 		show_alert(response);
@@ -38,14 +38,14 @@ function fillBackgrounds(id,name) {
 	$("#backgrounds").append('<div class="form-group row">'
 							  	+ '<h4 class="col-sm-3 col-md-4 col-form-label" data-i18n="'+name+'">'+name+':</h4>'
 							  	+ 	'<div class="col-sm-8 col-md-8" style="margin-top: 9px;">'
-							  	+		'<input type="radio" name="'+id.name+'" value="1"  onclick="update_ba('+id+',1)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="2"  onclick="update_ba('+id+',2)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="3"  onclick="update_ba('+id+',3)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="4"  onclick="update_ba('+id+',4)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="5"  onclick="update_ba('+id+',5)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="6"  onclick="update_ba('+id+',6)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="7"  onclick="update_ba('+id+',7)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="8"  onclick="update_ba('+id+',8)" />'
+								+		`<input type="radio" name="`+id.name+`" value="1" onclick="update_ba(`+id+`,1,'`+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="2" onclick="update_ba(`+id+`,2,'`+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="3" onclick="update_ba(`+id+`,3,'`+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="4" onclick="update_ba(`+id+`,4,'`+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="5" onclick="update_ba(`+id+`,5,'`+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="6" onclick="update_ba(`+id+`,6,'`+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="7" onclick="update_ba(`+id+`,7,'`+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="8" onclick="update_ba(`+id+`,8,'`+name+`')" />`
 							  	+	'</div>'
 							  	+ '</div>');
 
@@ -53,7 +53,7 @@ function fillBackgrounds(id,name) {
 	$.ajax({
 		type: "POST",
 		url: subsite + "create_backgrounds_vampire.php",
-		data: "id_char="+id_char+"&idCreate="+id
+		data: "id_char="+id_char+"&idCreate="+id+"&name="+name
 	}).done(function(response) {
 
 	}).fail(function(jqXHR) {
@@ -66,16 +66,18 @@ function fillOthers(id,name) {
 	$('#displayOthers').hide();
 	//attr_Dicipline3name
 	$("#others").append('<div class="form-group row">'
+
 							  	+ '<h4 class="col-sm-3 col-md-4 col-form-label" data-i18n="'+name+'">'+name+':</h4>'
 							  	+ 	'<div class="col-sm-8 col-md-8" style="margin-top: 9px;">'
-							  	+		'<input type="radio" name="'+id.name+'" value="1"  onclick="update_co('+id+',1)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="2"  onclick="update_co('+id+',2)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="3"  onclick="update_co('+id+',3)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="4"  onclick="update_co('+id+',4)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="5"  onclick="update_co('+id+',5)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="6"  onclick="update_co('+id+',6)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="7"  onclick="update_co('+id+',7)" />'
-							  	+		'<input type="radio" name="'+id.name+'" value="8"  onclick="update_co('+id+',8)" />'
+
+								+		`<input type="radio" name="`+id.name+`" value="1" onclick="update_co(`+id+`,1,'`+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="2" onclick="update_co(`+id+`,2,'`+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="3" onclick="update_co(`+id+`,3,'`+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="4" onclick="update_co(`+id+`,4,'`+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="5" onclick="update_co(`+id+`,5,'`+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="6" onclick="update_co(`+id+`,6,'`+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="7" onclick="update_co(`+id+`,7,'`+name+`')" />`
+								+		`<input type="radio" name="`+id.name+`" value="8" onclick="update_co(`+id+`,8,'`+name+`')" />`
 							  	+	'</div>'
 							  	+ '</div>');
 
@@ -93,13 +95,13 @@ function fillOthers(id,name) {
 /////////////////////end Fill Advantages
 
 /////////////////////update Advantages
-function update_at_ab(type,idUpdate,newValue)
+function update_at_ab(type,idUpdate,newValue,htmlTag)
 {
 	var id_char = $("#id_char").val(); 
 	$.ajax({
 		type: "POST",
 		url: subsite + "update_char_vampire.php",
-		data: "type="+type+"&idUpdate="+idUpdate+"&newValue="+newValue+"&id_char="+id_char
+		data: "type="+type+"&idUpdate="+idUpdate+"&newValue="+newValue+"&id_char="+id_char+"&htmlTag="+htmlTag
 	}).done(function(response) {
 		show_alert(response);
 	}).fail(function(jqXHR) {
@@ -107,13 +109,13 @@ function update_at_ab(type,idUpdate,newValue)
 	});
 }
 
-function update_dis(idUpdate,newValue)
+function update_dis(idUpdate,newValue,htmlTag)
 {
 	var id_char = $("#id_char").val(); 
 	$.ajax({
 		type: "POST",
 		url: subsite + "update_discipline_char_vampire.php",
-		data: "id_char="+id_char+"&idUpdate="+idUpdate+"&newValue="+newValue
+		data: "id_char="+id_char+"&idUpdate="+idUpdate+"&newValue="+newValue+"&htmlTag="+htmlTag
 	}).done(function(response) {
 		show_alert(response);
 	}).fail(function(jqXHR) {
@@ -121,13 +123,13 @@ function update_dis(idUpdate,newValue)
 	});
 }
 
-function update_ba(idUpdate,newValue)
+function update_ba(idUpdate,newValue,htmlTag)
 {
 	var id_char = $("#id_char").val(); 
 	$.ajax({
 		type: "POST",
 		url: subsite + "update_backgrounds_char_vampire.php",
-		data: "id_char="+id_char+"&idUpdate="+idUpdate+"&newValue="+newValue
+		data: "id_char="+id_char+"&idUpdate="+idUpdate+"&newValue="+newValue+"&htmlTag="+htmlTag
 	}).done(function(response) {
 		show_alert(response);
 	}).fail(function(jqXHR) {
@@ -135,13 +137,13 @@ function update_ba(idUpdate,newValue)
 	});
 }
 
-function update_co(idUpdate,newValue)
+function update_co(idUpdate,newValue,htmlTag)
 {
 	var id_char = $("#id_char").val(); 
 	$.ajax({
 		type: "POST",
 		url: subsite + "update_others_char_vampire.php",
-		data: "id_char="+id_char+"&idUpdate="+idUpdate+"&newValue="+newValue
+		data: "id_char="+id_char+"&idUpdate="+idUpdate+"&newValue="+newValue+"&htmlTag="+htmlTag
 	}).done(function(response) {
 		show_alert(response);
 	}).fail(function(jqXHR) {
@@ -149,13 +151,13 @@ function update_co(idUpdate,newValue)
 	});
 }
 
-function update_vi(idUpdate,newValue)
+function update_vi(idUpdate,newValue,htmlTag)
 {
 	var id_char = $("#id_char").val(); 
 	$.ajax({
 		type: "POST",
 		url: subsite + "update_virtues_char_vampire.php",
-		data: "id_char="+id_char+"&idUpdate="+idUpdate+"&newValue="+newValue
+		data: "id_char="+id_char+"&idUpdate="+idUpdate+"&newValue="+newValue+"&htmlTag="+htmlTag
 	}).done(function(response) {
 		show_alert(response);
 	}).fail(function(jqXHR) {
@@ -163,13 +165,13 @@ function update_vi(idUpdate,newValue)
 	});
 }
 
-function update_vc(typeInsert,newValue)
+function update_vc(typeInsert,newValue,htmlTag)
 {
 	var id_char = $("#id_char").val(); 
 	$.ajax({
 		type: "POST",
 		url: subsite + "update_more_char_vampire.php",
-		data: "id_char="+id_char+"&typeInsert="+typeInsert+"&newValue="+newValue
+		data: "id_char="+id_char+"&typeInsert="+typeInsert+"&newValue="+newValue+"&htmlTag="+htmlTag
 	}).done(function(response) {
 		show_alert(response);
 	}).fail(function(jqXHR) {

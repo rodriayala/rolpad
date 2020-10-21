@@ -20,7 +20,7 @@ try {
 	{		
 		if($stmt->rowCount()>0)
 		{
-			audit($id_char,$new_value,'0','sheet_vampire_chars_damage',$id,'');
+			audit($id_char,$new_value,'0','sheet_vampire_chars_damage',$id,$typeInsert,'update');
 			echo "chars damage successfully";
 		}else{
 			echo "chars damage Error";	

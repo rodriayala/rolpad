@@ -102,14 +102,14 @@ $(window).on('load', function () {//al principio de la carga seteo los valores a
 						  			$("#col"+col+val4.column_al+"").append('<div class="form-group row">'
 							  								+ '<h4 class="col-sm-3 col-md-4 col-form-label" data-i18n="'+val4.name+'">'+val4.name+':</h4>'
 							  								+ 	'<div class="col-sm-8 col-md-8" style="margin-top: 9px;">'
-							  								+		'<input type="radio" name="'+val4.html_tag+'" value="1" '+ (val4.actual_value == 1 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',1)" />'
-							  								+		'<input type="radio" name="'+val4.html_tag+'" value="2" '+ (val4.actual_value == 2 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',2)" />'
-							  								+		'<input type="radio" name="'+val4.html_tag+'" value="3" '+ (val4.actual_value == 3 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',3)" />'
-							  								+		'<input type="radio" name="'+val4.html_tag+'" value="4" '+ (val4.actual_value == 4 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',4)" />'
-							  								+		'<input type="radio" name="'+val4.html_tag+'" value="5" '+ (val4.actual_value == 5 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',5)" />'
-							  								+		'<input type="radio" name="'+val4.html_tag+'" value="6" '+ (val4.actual_value == 6 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',6)" />'
-							  								+		'<input type="radio" name="'+val4.html_tag+'" value="7" '+ (val4.actual_value == 7 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',7)" />'
-							  								+		'<input type="radio" name="'+val4.html_tag+'" value="8" '+ (val4.actual_value == 8 ? "checked": " ") +' onclick="update_at_ab('+col+','+val4.id+',8)" />'
+							  								+		`<input type="radio" name="`+val4.html_tag+`" value="1" `+ (val4.actual_value == 1 ? "checked": " ") +` onclick="update_at_ab(`+col+`,`+val4.id+`,1,'`+val4.html_tag+`')" />`
+							  								+		`<input type="radio" name="`+val4.html_tag+`" value="2" `+ (val4.actual_value == 2 ? "checked": " ") +` onclick="update_at_ab(`+col+`,`+val4.id+`,2,'`+val4.html_tag+`')" />`
+							  								+		`<input type="radio" name="`+val4.html_tag+`" value="3" `+ (val4.actual_value == 3 ? "checked": " ") +` onclick="update_at_ab(`+col+`,`+val4.id+`,3,'`+val4.html_tag+`')" />`
+							  								+		`<input type="radio" name="`+val4.html_tag+`" value="4" `+ (val4.actual_value == 4 ? "checked": " ") +` onclick="update_at_ab(`+col+`,`+val4.id+`,4,'`+val4.html_tag+`')" />`
+							  								+		`<input type="radio" name="`+val4.html_tag+`" value="5" `+ (val4.actual_value == 5 ? "checked": " ") +` onclick="update_at_ab(`+col+`,`+val4.id+`,5,'`+val4.html_tag+`')" />`
+							  								+		`<input type="radio" name="`+val4.html_tag+`" value="6" `+ (val4.actual_value == 6 ? "checked": " ") +` onclick="update_at_ab(`+col+`,`+val4.id+`,6,'`+val4.html_tag+`')" />`
+							  								+		`<input type="radio" name="`+val4.html_tag+`" value="7" `+ (val4.actual_value == 7 ? "checked": " ") +` onclick="update_at_ab(`+col+`,`+val4.id+`,7,'`+val4.html_tag+`')" />`
+							  								+		`<input type="radio" name="`+val4.html_tag+`" value="8" `+ (val4.actual_value == 8 ? "checked": " ") +` onclick="update_at_ab(`+col+`,`+val4.id+`,8,'`+val4.html_tag+`')" />`
 							  								+	'</div>'
 							  								+ '</div>');
 								  	//end attributes
@@ -117,18 +117,18 @@ $(window).on('load', function () {//al principio de la carga seteo los valores a
 								  	//disciplines							  		
 							  		if(key4=="disciplines"){ 
 									$("#disciplines").append(`<div class="form-group row">`
-														  	+ '<h4 class="col-sm-3 col-md-4 col-form-label" data-i18n="'+val4.name+'"  class="tooltip">'+val4.name+':</h4><span id="'+val4.id_opt_di+val4.name+'" style="position:absolute;"></span>'
+														  	+ '<h4 class="col-sm-3 col-md-4 col-form-label" data-i18n="'+val4.name+'"  class="tooltip">'+val4.name+':</h4>'
 														  	+ 	'<div class="col-sm-8 col-md-8" style="margin-top: 9px;" >'
-														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="1" `+ (val4.actual_value == 1 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,1)" onmouseover="dice_combination(`+val4.id_opt_di+`,1,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,1,'`+val4.id_opt_di+val4.name+`')" />`
-														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="2" `+ (val4.actual_value == 2 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,2)" onmouseover="dice_combination(`+val4.id_opt_di+`,2,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,1,'`+val4.id_opt_di+val4.name+`')" />`
-														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="3" `+ (val4.actual_value == 3 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,3)" onmouseover="dice_combination(`+val4.id_opt_di+`,3,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,1,'`+val4.id_opt_di+val4.name+`')" />`
-														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="4" `+ (val4.actual_value == 4 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,4)" onmouseover="dice_combination(`+val4.id_opt_di+`,4,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,1,'`+val4.id_opt_di+val4.name+`')" />`
-														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="5" `+ (val4.actual_value == 5 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,5)" onmouseover="dice_combination(`+val4.id_opt_di+`,5,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,1,'`+val4.id_opt_di+val4.name+`')" />`
-														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="6" `+ (val4.actual_value == 6 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,6)" onmouseover="dice_combination(`+val4.id_opt_di+`,6,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,1,'`+val4.id_opt_di+val4.name+`')" />`
-														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="7" `+ (val4.actual_value == 7 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,7)" onmouseover="dice_combination(`+val4.id_opt_di+`,7,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,1,'`+val4.id_opt_di+val4.name+`')" />`
-														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="8" `+ (val4.actual_value == 8 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,8)" onmouseover="dice_combination(`+val4.id_opt_di+`,8,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,1,'`+val4.id_opt_di+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="1" `+ (val4.actual_value == 1 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,1,'`+val4.name+`')" onmouseover="dice_combination(`+val4.id_opt_di+`,1,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,1,'`+val4.id_opt_di+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="2" `+ (val4.actual_value == 2 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,2,'`+val4.name+`')" onmouseover="dice_combination(`+val4.id_opt_di+`,2,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,2,'`+val4.id_opt_di+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="3" `+ (val4.actual_value == 3 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,3,'`+val4.name+`')" onmouseover="dice_combination(`+val4.id_opt_di+`,3,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,3,'`+val4.id_opt_di+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="4" `+ (val4.actual_value == 4 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,4,'`+val4.name+`')" onmouseover="dice_combination(`+val4.id_opt_di+`,4,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,4,'`+val4.id_opt_di+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="5" `+ (val4.actual_value == 5 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,5,'`+val4.name+`')" onmouseover="dice_combination(`+val4.id_opt_di+`,5,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,5,'`+val4.id_opt_di+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="6" `+ (val4.actual_value == 6 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,6,'`+val4.name+`')" onmouseover="dice_combination(`+val4.id_opt_di+`,6,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,6,'`+val4.id_opt_di+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="7" `+ (val4.actual_value == 7 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,7,'`+val4.name+`')" onmouseover="dice_combination(`+val4.id_opt_di+`,7,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,7,'`+val4.id_opt_di+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_di+val4.name+`" value="8" `+ (val4.actual_value == 8 ? "checked": " ") +` onclick="update_dis(`+val4.id_opt_di+`,8,'`+val4.name+`')" onmouseover="dice_combination(`+val4.id_opt_di+`,8,'`+val4.id_opt_di+val4.name+`')" onmouseout="dice_out_combination(`+val4.id_opt_di+`,8,'`+val4.id_opt_di+val4.name+`')" />`
 														  	+	'</div>'
-														  	+ '</div>');	
+														  	+ '</div><span id="'+val4.id_opt_di+val4.name+'" style="position:absolute;"></span>');	
 									}					  		
 								  	//end disciplines
 
@@ -137,14 +137,14 @@ $(window).on('load', function () {//al principio de la carga seteo los valores a
 									$("#backgrounds").append('<div class="form-group row">'
 														  	+ '<h4 class="col-sm-3 col-md-4 col-form-label" data-i18n="'+val4.name+'">'+val4.name+':</h4>'
 														  	+ 	'<div class="col-sm-8 col-md-8" style="margin-top: 9px;">'
-														  	+		'<input type="radio" name="'+val4.id_opt_ba+val4.name+'" value="1" '+ (val4.actual_value == 1 ? "checked": " ") +' onclick="update_ba('+val4.id_opt_ba+',1)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_ba+val4.name+'" value="2" '+ (val4.actual_value == 2 ? "checked": " ") +' onclick="update_ba('+val4.id_opt_ba+',2)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_ba+val4.name+'" value="3" '+ (val4.actual_value == 3 ? "checked": " ") +' onclick="update_ba('+val4.id_opt_ba+',3)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_ba+val4.name+'" value="4" '+ (val4.actual_value == 4 ? "checked": " ") +' onclick="update_ba('+val4.id_opt_ba+',4)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_ba+val4.name+'" value="5" '+ (val4.actual_value == 5 ? "checked": " ") +' onclick="update_ba('+val4.id_opt_ba+',5)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_ba+val4.name+'" value="6" '+ (val4.actual_value == 6 ? "checked": " ") +' onclick="update_ba('+val4.id_opt_ba+',6)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_ba+val4.name+'" value="7" '+ (val4.actual_value == 7 ? "checked": " ") +' onclick="update_ba('+val4.id_opt_ba+',7)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_ba+val4.name+'" value="8" '+ (val4.actual_value == 8 ? "checked": " ") +' onclick="update_ba('+val4.id_opt_ba+',8)" />'
+														  	+		`<input type="radio" name="`+val4.id_opt_ba+val4.name+`" value="1" `+ (val4.actual_value == 1 ? "checked": " ") +` onclick="update_ba(`+val4.id_opt_ba+`,1,'`+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_ba+val4.name+`" value="2" `+ (val4.actual_value == 2 ? "checked": " ") +` onclick="update_ba(`+val4.id_opt_ba+`,2,'`+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_ba+val4.name+`" value="3" `+ (val4.actual_value == 3 ? "checked": " ") +` onclick="update_ba(`+val4.id_opt_ba+`,3,'`+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_ba+val4.name+`" value="4" `+ (val4.actual_value == 4 ? "checked": " ") +` onclick="update_ba(`+val4.id_opt_ba+`,4,'`+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_ba+val4.name+`" value="5" `+ (val4.actual_value == 5 ? "checked": " ") +` onclick="update_ba(`+val4.id_opt_ba+`,5,'`+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_ba+val4.name+`" value="6" `+ (val4.actual_value == 6 ? "checked": " ") +` onclick="update_ba(`+val4.id_opt_ba+`,6,'`+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_ba+val4.name+`" value="7" `+ (val4.actual_value == 7 ? "checked": " ") +` onclick="update_ba(`+val4.id_opt_ba+`,7,'`+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_ba+val4.name+`" value="8" `+ (val4.actual_value == 8 ? "checked": " ") +` onclick="update_ba(`+val4.id_opt_ba+`,8,'`+val4.name+`')" />`
 														  	+	'</div>'
 														  	+ '</div>');	
 									}					  		
@@ -154,14 +154,14 @@ $(window).on('load', function () {//al principio de la carga seteo los valores a
 									$("#others").append('<div class="form-group row">'
 														  	+ '<h4 class="col-sm-3 col-md-4 col-form-label" data-i18n="'+val4.name+'">'+val4.name+':</h4>'
 														  	+ 	'<div class="col-sm-8 col-md-8" style="margin-top: 9px;">'
-														  	+		'<input type="radio" name="'+val4.id_opt_co+val4.name+'" value="1" '+ (val4.actual_value == 1 ? "checked": " ") +' onclick="update_co('+val4.id_opt_co+',1)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_co+val4.name+'" value="2" '+ (val4.actual_value == 2 ? "checked": " ") +' onclick="update_co('+val4.id_opt_co+',2)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_co+val4.name+'" value="3" '+ (val4.actual_value == 3 ? "checked": " ") +' onclick="update_co('+val4.id_opt_co+',3)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_co+val4.name+'" value="4" '+ (val4.actual_value == 4 ? "checked": " ") +' onclick="update_co('+val4.id_opt_co+',4)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_co+val4.name+'" value="5" '+ (val4.actual_value == 5 ? "checked": " ") +' onclick="update_co('+val4.id_opt_co+',5)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_co+val4.name+'" value="6" '+ (val4.actual_value == 6 ? "checked": " ") +' onclick="update_co('+val4.id_opt_co+',6)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_co+val4.name+'" value="7" '+ (val4.actual_value == 7 ? "checked": " ") +' onclick="update_co('+val4.id_opt_co+',7)" />'
-														  	+		'<input type="radio" name="'+val4.id_opt_co+val4.name+'" value="8" '+ (val4.actual_value == 8 ? "checked": " ") +' onclick="update_co('+val4.id_opt_co+',8)" />'
+														  	+		`<input type="radio" name="`+val4.id_opt_co+val4.name+`" value="1" `+ (val4.actual_value == 1 ? "checked": " ") +` onclick="update_co(`+val4.id_opt_co+`,1,'`+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_co+val4.name+`" value="2" `+ (val4.actual_value == 2 ? "checked": " ") +` onclick="update_co(`+val4.id_opt_co+`,2,'`+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_co+val4.name+`" value="3" `+ (val4.actual_value == 3 ? "checked": " ") +` onclick="update_co(`+val4.id_opt_co+`,3,'`+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_co+val4.name+`" value="4" `+ (val4.actual_value == 4 ? "checked": " ") +` onclick="update_co(`+val4.id_opt_co+`,4,'`+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_co+val4.name+`" value="5" `+ (val4.actual_value == 5 ? "checked": " ") +` onclick="update_co(`+val4.id_opt_co+`,5,'`+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_co+val4.name+`" value="6" `+ (val4.actual_value == 6 ? "checked": " ") +` onclick="update_co(`+val4.id_opt_co+`,6,'`+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_co+val4.name+`" value="7" `+ (val4.actual_value == 7 ? "checked": " ") +` onclick="update_co(`+val4.id_opt_co+`,7,'`+val4.name+`')" />`
+														  	+		`<input type="radio" name="`+val4.id_opt_co+val4.name+`" value="8" `+ (val4.actual_value == 8 ? "checked": " ") +` onclick="update_co(`+val4.id_opt_co+`,8,'`+val4.name+`')" />`
 														  	+	'</div>'
 														  	+ '</div>');	
 									}					  		

@@ -9,6 +9,7 @@ $type 		= $_POST['type'];
 $id_update 	= trim($_POST['idUpdate']);
 $new_value 	= $_POST['newValue'];
 $id_char 	= $_POST['id_char'];
+$htmlTag 	= $_POST['htmlTag'];
 #echo $id_char." - ".$type." - ". $id_update." - ".$newValue; 
 
 if($type=="1"){ $table = "sheet_vampire_chars_attributes"; }
@@ -26,12 +27,12 @@ try {
 		{
 			if($type=="1")
 			{
-				audit($id_char,$new_value,'0','sheet_vampire_chars_attributes',$id_update,'');
+				audit($id_char,$new_value,'0','sheet_vampire_chars_attributes',$id_update,$htmlTag,'update');
 				echo "chars attributes successfully";
 			}
 			if($type=="2")
 			{
-				audit($id_char,$new_value,'0','sheet_vampire_chars_abilities',$id_update,'');
+				audit($id_char,$new_value,'0','sheet_vampire_chars_abilities',$id_update,$htmlTag,'update');
 				echo "chars abilities successfully";
 			}
 		}else{

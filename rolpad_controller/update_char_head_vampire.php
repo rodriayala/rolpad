@@ -20,7 +20,7 @@ try {
 	{		
 		if($stmt->rowCount()>0)
 		{
-			audit($id_char,$new_value,'0','sheet_vampire_chars','',$htmlTag);
+			audit($id_char,$new_value,'0','sheet_vampire_chars','',$htmlTag,'update');
 			echo "chars $htmlTag successfully";
 		}else{
 			echo "chars $htmlTag Error";	

@@ -45,7 +45,7 @@
   /* Position the tooltip 
   position: absolute;*/
   z-index: 1;
-  margin-top: 10px;
+  margin-top: 1px;
 }
 
 .tooltiptext .card-body{

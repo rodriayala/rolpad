@@ -1,10 +1,10 @@
 <?php
 
-function audit($id_char,$new_value,$old_value,$table_char,$table_id,$html_tag)
+function audit($id_char,$new_value,$old_value,$table_char,$table_id,$html_tag,$action)
 {
 
 	$db_con_au = conectar();
-	$stmt_au = $db_con_au->prepare("INSERT INTO `audit_chars`(`id_char`, `old_value`, `new_value`, `table_name`, `table_id`, `html_tag`) VALUES (:id_char,:old_value,:new_value,:table_char,:table_id,:html_tag)");
+	$stmt_au = $db_con_au->prepare("INSERT INTO `audit_chars`(`id_char`, `old_value`, `new_value`, `table_name`, `table_id`, `html_tag`,action) VALUES (:id_char,:old_value,:new_value,:table_char,:table_id,:html_tag,:action)");
 	//echo "INSERT INTO `audit_chars`(`id_char`, `old_value`, `new_value`, `table_name`, `table_id`) VALUES ($id_char,$old_value,$new_value,$table_char,$table_id,$html_tag)";
 	$stmt_au->bindParam(":id_char", $id_char);
 	$stmt_au->bindParam(":new_value", $new_value);
@@ -12,6 +12,7 @@ function audit($id_char,$new_value,$old_value,$table_char,$table_id,$html_tag)
 	$stmt_au->bindParam(":table_char", $table_char);
 	$stmt_au->bindParam(":table_id", $table_id);
 	$stmt_au->bindParam(":html_tag", $html_tag);
+	$stmt_au->bindParam(":action", $action);
 
 	try {
 	 	$stmt_au->execute();

@@ -5,6 +5,7 @@ include 'inc/global_functions.php';
 #create values
 $id_char 	= $_POST['id_char'];
 $id_create 	= $_POST['idCreate'];
+$name 		= $_POST['name'];
 $actual_value = 0;
 
 $db_con = conectar();
@@ -23,7 +24,7 @@ try {
 			$stmt 	= $db_con->query("SELECT LAST_INSERT_ID()");
         	$new_value = $stmt->fetchColumn(); 
 
-			audit($id_char,$new_value,'0','sheet_vampire_chars_backgrounds',$id_create,'chars_backgrounds');
+			audit($id_char,'0','0','sheet_vampire_chars_backgrounds',$id_create,$name,'create');
 			echo "chars backgrounds successfully";
 		}else{
 			echo "chars backgrounds Error";	

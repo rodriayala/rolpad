@@ -7,6 +7,7 @@ include 'inc/global_functions.php';
 $id_char 	= $_POST['id_char'];
 $id_update 	= $_POST['idUpdate'];
 $new_value 	= $_POST['newValue'];
+$htmlTag 	= $_POST['htmlTag'];
 
 $db_con = conectar();
 $stmt = $db_con->prepare("UPDATE sheet_vampire_chars_disciplines SET actual_value= :new_value WHERE id_di = :id_update and id_char = :id_char");
@@ -20,7 +21,7 @@ try {
 	{		
 		if($stmt->rowCount()>0)
 		{
-			audit($id_char,$new_value,'0','sheet_vampire_chars_disciplines',$id_update);
+			audit($id_char,$new_value,'0','sheet_vampire_chars_disciplines',$id_update,$htmlTag,'update');
 
 			echo "chars disciplines successfully";
 		}else{

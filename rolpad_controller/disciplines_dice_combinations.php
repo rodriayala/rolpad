@@ -44,6 +44,15 @@ try {
 }
 $db_con=NULL;
 
+if (empty($json_res)) {
+	$json_res_init = array('dice_combinations' => array("name" => "unknown",
+									"combination" => "unknown",
+									"is_masquerade" => "unknown",	
+									"edition" => "unknown"));
+
+	$json_res[] = $json_res_init;
+}
+
 if($type == "error")
 {
 	http_response_code(403);

@@ -19,7 +19,7 @@ try {
 	{		
 		if($stmt->rowCount()>0)
 		{
-			audit($id_char,$new_value,'0','sheet_vampire_chars','0',$typeInsert);
+			audit($id_char,$new_value,'0','sheet_vampire_chars','0',$typeInsert,'update');
 			echo "chars $typeInsert successfully";
 		}else{
 			echo "chars $typeInsert Error";	

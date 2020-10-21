@@ -1,10 +1,12 @@
 <?php
 error_reporting(E_ALL);
 include 'inc/dbconfig.php';
-
+include 'inc/global_functions.php';
 #create values
 $id_char 	= $_POST['id_char'];
 $id_create 	= $_POST['idCreate'];
+$name 		= $_POST['name'];
+
 $actual_value = 0;
 
 $db_con = conectar();
@@ -20,7 +22,7 @@ try {
 	{		
 		if($stmt->rowCount()>0)
 		{
-			audit($id_char,$new_value,'0','sheet_vampire_chars_disciplines',$id_create,'create discipline');
+			audit($id_char,'0','0','sheet_vampire_chars_disciplines',$id_create,$name,'create');
 			echo "chars disciplines successfully";
 		}else{
 			echo "chars disciplines Error";	

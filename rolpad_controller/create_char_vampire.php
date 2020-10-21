@@ -35,7 +35,7 @@ try {
 		$stmt 	= $db_con->query("SELECT LAST_INSERT_ID()");
         $id_char = $stmt->fetchColumn(); 
 
-        audit($id_char,'User Number: ','0','sheet_vampire_chars',$id_char,'Vampire Create');
+        audit($id_char,'User Number: ','0','sheet_vampire_chars',$id_char,'Vampire Create','create');
     }
 } catch (PDOException $e) {
     $mensaje = "Error, surguio un problema al crear el vampiro" . $e->getMessage();
